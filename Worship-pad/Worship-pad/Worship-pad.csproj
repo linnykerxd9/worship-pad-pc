@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
-    <RootNamespace>Worship_pad</RootNamespace>
+    <RootNamespace>WorshipPad</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="Audio\Effects\" />
     <Folder Include="Audio\Outputs\" />
-    <Folder Include="Pads\" />
   </ItemGroup>
 
   <ItemGroup>

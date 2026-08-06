@@ -1,12 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WorshipPad.Core.Enums;
+using WorshipPad.Core.Models;
 
-namespace Worship_pad.Core.Helpers
+namespace WorshipPad.Core.Helpers;
+
+public static class PadHelper
 {
-    internal class Class1
+    private static readonly Dictionary<PadNote, string> DisplayNames = new()
     {
+        { PadNote.C, "C" },
+        { PadNote.CSharp, "C#" },
+        { PadNote.D, "D" },
+        { PadNote.DSharp, "D#" },
+        { PadNote.E, "E" },
+        { PadNote.F, "F" },
+        { PadNote.FSharp, "F#" },
+        { PadNote.G, "G" },
+        { PadNote.GSharp, "G#" },
+        { PadNote.A, "A" },
+        { PadNote.ASharp, "A#" },
+        { PadNote.B, "B" }
+    };
+
+    public static string ToDisplayName(PadNote note)
+    {
+        return DisplayNames[note];
+    }
+
+    public static IReadOnlyList<PadButton> CreateButtons()
+    {
+        return Enum.GetValues<PadNote>()
+            .Select(note => new PadButton
+            {
+                Note = note,
+                DisplayName = ToDisplayName(note)
+            })
+            .ToList();
     }
 }
