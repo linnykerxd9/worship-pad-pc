@@ -86,7 +86,7 @@
 
         <TextBlock
             Grid.Row="1"
-            Text="Signature"
+            Text="{Binding CurrentBank}"
             Foreground="#AAAAAA"
             FontSize="22"
             Margin="0,30,0,20"
@@ -102,44 +102,35 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
+            <ItemsControl ItemsSource="{Binding Pads}"
+              Grid.Row="2">
 
-            <Button Content="C"
-                    Style="{StaticResource PadButtonStyle}"/>
+                <ItemsControl.ItemsPanel>
 
-            <Button Content="C#"
-                    Style="{StaticResource PadButtonStyle}"/>
+                    <ItemsPanelTemplate>
 
-            <Button Content="D"
-                    Style="{StaticResource PadButtonStyle}"/>
+                        <UniformGrid Columns="4"/>
 
-            <Button Content="D#"
-                    Style="{StaticResource PadButtonStyle}"/>
+                    </ItemsPanelTemplate>
 
-
-            <Button Content="E"
-                    Style="{StaticResource PadButtonStyle}"/>
-
-            <Button Content="F"
-                    Style="{StaticResource PadButtonStyle}"/>
-
-            <Button Content="F#"
-                    Style="{StaticResource PadButtonStyle}"/>
-
-            <Button Content="G"
-                    Style="{StaticResource PadButtonStyle}"/>
+                </ItemsControl.ItemsPanel>
 
 
-            <Button Content="G#"
-                    Style="{StaticResource PadButtonStyle}"/>
+                <ItemsControl.ItemTemplate>
 
-            <Button Content="A"
-                    Style="{StaticResource PadButtonStyle}"/>
+                    <DataTemplate>
 
-            <Button Content="A#"
-                    Style="{StaticResource PadButtonStyle}"/>
+                        <Button
+                Content="{Binding DisplayName}"
+                Style="{StaticResource PadButtonStyle}"/>
 
-            <Button Content="B"
-                    Style="{StaticResource PadButtonStyle}"/>
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+
+            </ItemsControl>
+
 
 
         </UniformGrid>
@@ -161,7 +152,7 @@
             <Slider
                 Minimum="0"
                 Maximum="100"
-                Value="80"
+                Value="{Binding Volume}"
                 Height="35"/>
 
 

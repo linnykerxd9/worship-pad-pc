@@ -1,12 +1,273 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\worship-pad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\worship-pad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\interfaces\\ibankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\interfaces\\ibankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\helpers\\padhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\helpers\\padhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\enums\\padnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\enums\\padnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\models\\padbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\models\\padbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\models\\padbank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\models\\padbank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\pads\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\pads\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\interfaces\\isettingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\interfaces\\isettingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\interfaces\\iaudioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\interfaces\\iaudioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\core\\interfaces\\ipadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\core\\interfaces\\ipadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}|NewFolder1{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}|C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Docs\\docsROADMAP.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "Worship-pad\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwBwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:27:48.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Worship-pad\\Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:26:06.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Worship-pad\\Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml*",
+              "RelativeToolTip": "Worship-pad\\Views\\MainWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-06T23:25:54.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PadHelper.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Helpers\\PadHelper.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Helpers\\PadHelper.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Helpers\\PadHelper.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Helpers\\PadHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:19:24.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "config.json",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Pads\\config.json",
+              "RelativeDocumentMoniker": "Worship-pad\\Pads\\config.json",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Pads\\config.json",
+              "RelativeToolTip": "Worship-pad\\Pads\\config.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-06T23:17:43.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Events.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Events.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Events.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Events.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Events.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:15:42.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PadNote.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Enums\\PadNote.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Enums\\PadNote.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Enums\\PadNote.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Enums\\PadNote.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:15:19.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PadButton.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadButton.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\PadButton.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadButton.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Models\\PadButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:15:19.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Worship-pad",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Worship-pad.csproj",
+              "RelativeDocumentMoniker": "Worship-pad\\Worship-pad.csproj",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Worship-pad.csproj",
+              "RelativeToolTip": "Worship-pad\\Worship-pad.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-06T23:14:49.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PadBank.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadBank.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\PadBank.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadBank.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Models\\PadBank.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:08:51.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IBankService.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IBankService.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IBankService.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IBankService.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Interfaces\\IBankService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:08:24.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ISettingsService.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\ISettingsService.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\ISettingsService.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\ISettingsService.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Interfaces\\ISettingsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:08:31.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAudioService.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAudioService.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IAudioService.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAudioService.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Interfaces\\IAudioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:08:13.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IPadService.cs",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IPadService.cs",
+              "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IPadService.cs",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IPadService.cs",
+              "RelativeToolTip": "Worship-pad\\Core\\Interfaces\\IPadService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:08:00.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "docsROADMAP.md",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Docs\\docsROADMAP.md",
+              "RelativeDocumentMoniker": "..\\Docs\\docsROADMAP.md",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Docs\\docsROADMAP.md",
+              "RelativeToolTip": "..\\Docs\\docsROADMAP.md",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwBoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-08-06T23:05:30.286Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
