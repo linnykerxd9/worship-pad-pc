@@ -1,4 +1,4 @@
-﻿namespace Worship_pad.Models;
+﻿namespace WorshipPad.Core.Enums;
 
 public enum PadNote
 {

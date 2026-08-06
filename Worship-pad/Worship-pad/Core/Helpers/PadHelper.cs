@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Worship_pad.Models
+namespace Worship_pad.Core.Helpers
 {
-    internal class Settings
+    internal class Class1
     {
     }
 }
