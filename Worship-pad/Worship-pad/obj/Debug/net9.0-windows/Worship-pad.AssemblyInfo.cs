@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Worship-pad")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73d6b11012a69e14492ca42dc6fa2e8a36ca27b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1efd39ada63d672846b91aab9e6b13b92d03851")]
 [assembly: System.Reflection.AssemblyProductAttribute("Worship-pad")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Worship-pad")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

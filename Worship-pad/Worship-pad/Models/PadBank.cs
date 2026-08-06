@@ -1,10 +1,8 @@
-﻿namespace Worship_pad.Models;
+﻿using Worship_pad.Models;
 
 public class PadBank
 {
     public string Name { get; set; } = "";
 
-    public string Folder { get; set; } = "";
-
-    public Dictionary<PadNote, string> Files { get; set; } = new();
+    public Dictionary<PadNote, string> Notes { get; set; } = new();
 }
