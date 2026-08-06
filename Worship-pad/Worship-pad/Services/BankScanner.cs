@@ -1,13 +1,14 @@
-﻿using System.IO;
-using WorshipPad.Models;
+﻿using System.Collections.ObjectModel;
+using System.IO;
+using Worship_pad.Models;
 
-namespace WorshipPad.Services;
+namespace Worship_pad.Services;
 
 public static class BankScanner
 {
-    public static List<PadBank> Scan()
+    public static ObservableCollection<PadBank> Scan()
     {
-        List<PadBank> banks = new();
+        ObservableCollection<PadBank> banks = new();
 
         string padsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pads");
 
@@ -38,47 +39,40 @@ public static class BankScanner
         return banks;
     }
 
-    private static bool TryMap(string name, out PadNote note)
+    private static readonly Dictionary<string, PadNote> Map = new()
     {
-        note = PadNote.C;
+        ["c"] = PadNote.C,
 
-        return name switch
-        {
-            "c" => Set(PadNote.C),
-            "csharp" => Set(PadNote.CSharp),
-            "db" => Set(PadNote.CSharp),
+        ["csharp"] = PadNote.CSharp,
+        ["db"] = PadNote.CSharp,
 
-            "d" => Set(PadNote.D),
+        ["d"] = PadNote.D,
 
-            "dsharp" => Set(PadNote.DSharp),
-            "eb" => Set(PadNote.DSharp),
+        ["dsharp"] = PadNote.DSharp,
+        ["eb"] = PadNote.DSharp,
 
-            "e" => Set(PadNote.E),
+        ["e"] = PadNote.E,
 
-            "f" => Set(PadNote.F),
+        ["f"] = PadNote.F,
 
-            "fsharp" => Set(PadNote.FSharp),
-            "gb" => Set(PadNote.FSharp),
+        ["fsharp"] = PadNote.FSharp,
+        ["gb"] = PadNote.FSharp,
 
-            "g" => Set(PadNote.G),
+        ["g"] = PadNote.G,
 
-            "gsharp" => Set(PadNote.GSharp),
-            "ab" => Set(PadNote.GSharp),
+        ["gsharp"] = PadNote.GSharp,
+        ["ab"] = PadNote.GSharp,
 
-            "a" => Set(PadNote.A),
+        ["a"] = PadNote.A,
 
-            "asharp" => Set(PadNote.ASharp),
-            "bb" => Set(PadNote.ASharp),
+        ["asharp"] = PadNote.ASharp,
+        ["bb"] = PadNote.ASharp,
 
-            "b" => Set(PadNote.B),
+        ["b"] = PadNote.B
+    };
 
-            _ => false
-        };
-
-        bool Set(PadNote n)
-        {
-            note = n;
-            return true;
-        }
+    private static bool TryMap(string fileName, out PadNote note)
+    {
+        return Map.TryGetValue(fileName, out note);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WorshipPad.Configuration;
+﻿namespace Worship_pad.Configuration;
 
 public class AppConfig
 {

@@ -1,4 +1,4 @@
-﻿namespace WorshipPad.Models;
+﻿namespace Worship_pad.Models;
 
 public class PadBank
 {

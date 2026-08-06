@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace WorshipPad.Configuration;
+namespace Worship_pad.Configuration;
 
 public static class ConfigManager
 {
