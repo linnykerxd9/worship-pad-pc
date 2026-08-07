@@ -2,52 +2,35 @@
 using WorshipPad.Core.Interfaces;
 using WorshipPad.Core.Models;
 
-namespace WorshipPad.Services;
+namespace WorshipPad.Core.Services;
 
 public class BankService : IBankService
 {
-    private readonly string _padsPath;
+    private readonly string _padsFolder;
 
 
     public BankService()
     {
-        _padsPath = Path.Combine(
-            AppContext.BaseDirectory,
+        _padsFolder = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory,
             "Pads"
         );
-
-        EnsureFolder();
     }
 
 
     public IReadOnlyList<PadBank> GetBanks()
     {
-        var folders = Directory.GetDirectories(_padsPath);
-
-        Console.WriteLine($"Pasta de pads: {_padsPath}");
-        Console.WriteLine($"Bancos encontrados: {folders.Length}");
-
-        foreach (var folder in folders)
-        {
-            Console.WriteLine(folder);
-        }
+        if (!Directory.Exists(_padsFolder))
+            return new List<PadBank>();
 
 
-        return folders
+        return Directory
+            .GetDirectories(_padsFolder)
             .Select(folder => new PadBank
             {
                 Name = Path.GetFileName(folder),
                 FolderPath = folder
             })
             .ToList();
-    }
-
-
-    private void EnsureFolder()
-    {
-        if (!Directory.Exists(_padsPath))
-        {
-            Directory.CreateDirectory(_padsPath);
-        }
     }
 }

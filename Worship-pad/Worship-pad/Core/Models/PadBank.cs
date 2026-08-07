@@ -1,8 +1,11 @@
-﻿namespace WorshipPad.Core.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public class PadBank
+public partial class PadBank : ObservableObject
 {
     public string Name { get; set; } = "";
 
     public string FolderPath { get; set; } = "";
+
+    [ObservableProperty]
+    private bool isSelected;
 }

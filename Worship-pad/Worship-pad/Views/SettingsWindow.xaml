@@ -1,0 +1,56 @@
+﻿<Window x:Class="WorshipPad.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configurações"
+        Width="500"
+        Height="400"
+        Background="#121212">
+
+
+    <StackPanel Margin="30">
+
+
+        <TextBlock
+            Text="Configurações"
+            Foreground="White"
+            FontSize="30"
+            HorizontalAlignment="Center"
+            Margin="0,0,0,30"/>
+
+
+
+        <TextBlock
+            Text="Saída de áudio"
+            Foreground="White"
+            FontSize="18"/>
+
+
+        <ComboBox
+            Width="300"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding AudioDevices}"
+            SelectedItem="{Binding SelectedAudioDevice}"
+            Margin="0,10,0,30"/>
+
+
+
+        <TextBlock
+            Text="Volume inicial"
+            Foreground="White"
+            FontSize="18"/>
+
+
+        <Slider
+    Width="250"
+    Minimum="0"
+    Maximum="1"
+    Value="{Binding Volume, Mode=TwoWay}"
+    Margin="10"
+    IsMoveToPointEnabled="True"
+    SmallChange="0.01"
+    LargeChange="0.1"/>
+
+
+    </StackPanel>
+
+</Window>

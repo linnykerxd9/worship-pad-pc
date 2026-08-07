@@ -4,60 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="OpenWorshipPad"
+        Title="Worship Pad"
         Width="900"
-        Height="700"
-        WindowStartupLocation="CenterScreen"
+        Height="600"
         Background="#121212">
 
-    <Window.Resources>
-
-        <!-- Botão dos pads -->
+        <Window.Resources>
         <Style x:Key="PadButtonStyle" TargetType="Button">
 
-            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Background" Value="#222222"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="28"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="8"/>
-            <Setter Property="Width" Value="130"/>
+            <Setter Property="Width" Value="120"/>
             <Setter Property="Height" Value="90"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
 
-            <Setter Property="Template">
+            <Style.Triggers>
 
-                <Setter.Value>
+                <DataTrigger Binding="{Binding IsPlaying}"
+                     Value="True">
 
-                    <ControlTemplate TargetType="Button">
+                    <Setter Property="Background"
+                    Value="#00AA55"/>
 
-                        <Border
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="15">
+                </DataTrigger>
 
-                            <ContentPresenter
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        TextElement.Foreground="{TemplateBinding Foreground}"
-                        TextElement.FontSize="{TemplateBinding FontSize}"
-                        TextElement.FontWeight="{TemplateBinding FontWeight}"/>
-
-                        </Border>
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-
-            </Setter>
+            </Style.Triggers>
 
         </Style>
+        <Style x:Key="BankButtonStyle" TargetType="Button">
 
+            <Setter Property="Background" Value="#2B2B2B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <Style.Triggers>
+
+                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+
+                    <Setter Property="Background" Value="#2E7D32"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+
+                </DataTrigger>
+
+            </Style.Triggers>
+
+        </Style>
     </Window.Resources>
-
-
-    <Grid Margin="30">
+    <Grid Margin="20">
 
         <Grid.RowDefinitions>
 
@@ -65,143 +61,147 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
 
 
-        <!-- Cabeçalho -->
 
-        <DockPanel Grid.Row="0">
+        <!-- BANCOS -->
 
-            <TextBlock
-                Text="OpenWorshipPad"
-                Foreground="White"
-                FontSize="32"
-                FontWeight="Bold"
-                DockPanel.Dock="Left"/>
+        <ItemsControl Grid.Row="0"
+                      ItemsSource="{Binding Banks}">
 
+            <ItemsControl.ItemsPanel>
 
-            <Button
-                Content="⚙"
-                Width="45"
-                Height="45"
-                FontSize="22"
-                DockPanel.Dock="Right"/>
+                <ItemsPanelTemplate>
 
-        </DockPanel>
+                    <StackPanel Orientation="Horizontal"/>
+
+                </ItemsPanelTemplate>
+
+            </ItemsControl.ItemsPanel>
 
 
+            <ItemsControl.ItemTemplate>
 
-        <!-- Banco -->
+                <DataTemplate>
 
-        <TextBlock
-            Grid.Row="1"
-             Text="{Binding CurrentBank}"
-            Foreground="#AAAAAA"
-            FontSize="22"
-            Margin="0,30,0,20"
-            HorizontalAlignment="Center"/>
+                    <Button
+    Content="{Binding Name}"
+    Style="{StaticResource BankButtonStyle}"
+    Command="{Binding DataContext.SelectBankCommand,
+              RelativeSource={RelativeSource AncestorType=Window}}"
+    CommandParameter="{Binding}"/>
 
+                </DataTemplate>
 
-
-        <!-- Pads -->
-
-        <UniformGrid
-            Grid.Row="2"
-            Columns="4"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <ScrollViewer
-    HorizontalScrollBarVisibility="Disabled"
-    VerticalScrollBarVisibility="Auto">
-
-                <ItemsControl ItemsSource="{Binding Pads}">
-
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="4"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+            </ItemsControl.ItemTemplate>
 
 
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-
-                            <Button
-                    Content="{Binding DisplayName}"
-                    Style="{StaticResource PadButtonStyle}"/>
-
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-
-                </ItemsControl>
-
-            </ScrollViewer>
+        </ItemsControl>
 
 
 
-        </UniformGrid>
+        <!-- BANCO ATUAL -->
+
+        <TextBlock Grid.Row="1"
+                   Text="{Binding CurrentBank}"
+                   Foreground="White"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   Margin="10"/>
 
 
 
-        <!-- Volume -->
 
+        <!-- PADS -->
+
+        <ItemsControl Grid.Row="2"
+                      ItemsSource="{Binding Pads}">
+
+
+            <ItemsControl.ItemsPanel>
+
+                <ItemsPanelTemplate>
+
+                    <UniformGrid Columns="4"/>
+
+                </ItemsPanelTemplate>
+
+            </ItemsControl.ItemsPanel>
+
+
+
+            <ItemsControl.ItemTemplate>
+
+                <DataTemplate>
+
+
+                    <Button
+    Content="{Binding DisplayName}"
+    Style="{StaticResource PadButtonStyle}"
+    Command="{Binding DataContext.PlayPadCommand,
+              RelativeSource={RelativeSource AncestorType=Window}}"
+    CommandParameter="{Binding}"/>
+
+                </DataTemplate>
+
+
+            </ItemsControl.ItemTemplate>
+
+    
+        </ItemsControl>
         <StackPanel
-            Grid.Row="3"
-            Margin="0,30">
+    Grid.Row="3"
+    Orientation="Horizontal"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center">
 
+            <ComboBox
+    Width="250"
+    ItemsSource="{Binding AudioDevices}"
+    SelectedItem="{Binding SelectedAudioDevice}"
+    Margin="10"/>
+            
             <TextBlock
-                Text="Volume"
-                Foreground="White"
-                FontSize="18"/>
+        Text="Volume"
+        Foreground="White"
+        FontSize="18"
+        Margin="10"/>
 
 
             <Slider
-                Minimum="0"
-                Maximum="100"
-                Value="{Binding Volume}"
-                Height="35"/>
-
+    Width="250"
+    Minimum="0"
+    Maximum="1"
+    Value="{Binding Volume, Mode=TwoWay}"
+    Margin="10"
+    IsMoveToPointEnabled="True"
+    SmallChange="0.01"
+    LargeChange="0.1"/>
 
             <TextBlock
-                Text="80%"
-                Foreground="#AAAAAA"
-                HorizontalAlignment="Center"/>
+    Text="{Binding Volume}"
+    Foreground="White"
+    FontSize="20"/>
+
+
+            <Button
+        Content="STOP"
+        Command="{Binding StopCommand}"
+        Width="100"
+        Height="40"
+        Margin="10"/>
+
 
         </StackPanel>
-
-
-
-        <!-- Status -->
-
-        <Border
-            Grid.Row="4"
-            Background="#1E1E1E"
-            CornerRadius="10"
-            Padding="15">
-
-
-            <StackPanel>
-
-                <TextBlock
-                    Text="XR18 USB ASIO"
-                    Foreground="White"
-                    FontSize="16"/>
-
-
-                <TextBlock
-                    Text="● Desconectado"
-                    Foreground="#FF5555"
-                    Margin="0,5,0,0"/>
-
-
-            </StackPanel>
-
-
-        </Border>
-
-
+        <Button
+    Content="⚙ Configurações"
+    Width="150"
+    Height="40"
+    Margin="10"
+    Click="OpenSettings_Click"/>
     </Grid>
+
 
 </Window>

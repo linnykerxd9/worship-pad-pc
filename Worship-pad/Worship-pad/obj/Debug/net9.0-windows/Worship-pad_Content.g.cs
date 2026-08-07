@@ -9,7 +9,10 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/config.json")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/a.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/asharp.m4a")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/b.m4a")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/c.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/csharp.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/d.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/dsharp.m4a")]
@@ -18,5 +21,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/fsharp.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/g.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/gsharp.m4a")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/teste/d.m4a")]
 
 

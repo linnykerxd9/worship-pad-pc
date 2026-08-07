@@ -39,3 +39,9 @@ C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\De
 C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\Debug\net9.0-windows\Worship-pad.pdb
 C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\Debug\net9.0-windows\Worship-pad.genruntimeconfig.cache
 C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\Debug\net9.0-windows\ref\Worship-pad.dll
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\bin\Debug\net9.0-windows\Pads\Signature\A.m4a
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\bin\Debug\net9.0-windows\Pads\Signature\B.m4a
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\bin\Debug\net9.0-windows\Pads\Signature\C.m4a
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\bin\Debug\net9.0-windows\Pads\teste\D.m4a
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\Debug\net9.0-windows\Views\SettingsWindow.baml
+C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\obj\Debug\net9.0-windows\Views\SettingsWindow.g.cs

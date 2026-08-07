@@ -21,5 +21,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/fsharp.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/g.m4a")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/signature/gsharp.m4a")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pads/teste/d.m4a")]
 
 

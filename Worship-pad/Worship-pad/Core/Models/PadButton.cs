@@ -1,8 +1,9 @@
-﻿using WorshipPad.Core.Enums;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using WorshipPad.Core.Enums;
 
 namespace WorshipPad.Core.Models;
 
-public class PadButton
+public partial class PadButton : ObservableObject
 {
     public PadNote Note { get; set; }
 
@@ -10,4 +11,6 @@ public class PadButton
 
     public string AudioPath { get; set; } = "";
 
+    [ObservableProperty]
+    private bool isPlaying;
 }
