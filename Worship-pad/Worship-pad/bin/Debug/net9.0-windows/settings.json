@@ -1,1 +1,6 @@
-{"OutputDevice":"Alto-falantes (Realtek High Definition Audio)"}
+{
+  "OutputDevice": "Alto-falantes (Realtek High Definition Audio)",
+  "OutputType": 0,
+  "AsioDriver": null,
+  "Volume": 0.6171548117154813
+}

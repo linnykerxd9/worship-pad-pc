@@ -29,8 +29,14 @@ public class BankService : IBankService
             .Select(folder => new PadBank
             {
                 Name = Path.GetFileName(folder),
-                FolderPath = folder
-            })
+                FolderPath = folder,
+                PadCount = Directory
+                .EnumerateFiles(folder)
+                .Count(file =>
+                    file.EndsWith(".wav", StringComparison.OrdinalIgnoreCase)
+                 || file.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase)
+                 || file.EndsWith(".m4a", StringComparison.OrdinalIgnoreCase))
+                    })
             .ToList();
     }
 }

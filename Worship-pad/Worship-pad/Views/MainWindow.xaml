@@ -87,7 +87,7 @@
                 <DataTemplate>
 
                     <Button
-    Content="{Binding Name}"
+   Content="{Binding DisplayName}"
     Style="{StaticResource BankButtonStyle}"
     Command="{Binding DataContext.SelectBankCommand,
               RelativeSource={RelativeSource AncestorType=Window}}"
@@ -156,34 +156,6 @@
     Orientation="Horizontal"
     HorizontalAlignment="Center"
     VerticalAlignment="Center">
-
-            <ComboBox
-    Width="250"
-    ItemsSource="{Binding AudioDevices}"
-    SelectedItem="{Binding SelectedAudioDevice}"
-    Margin="10"/>
-            
-            <TextBlock
-        Text="Volume"
-        Foreground="White"
-        FontSize="18"
-        Margin="10"/>
-
-
-            <Slider
-    Width="250"
-    Minimum="0"
-    Maximum="1"
-    Value="{Binding Volume, Mode=TwoWay}"
-    Margin="10"
-    IsMoveToPointEnabled="True"
-    SmallChange="0.01"
-    LargeChange="0.1"/>
-
-            <TextBlock
-    Text="{Binding Volume}"
-    Foreground="White"
-    FontSize="20"/>
 
 
             <Button

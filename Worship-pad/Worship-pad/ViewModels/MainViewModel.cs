@@ -12,9 +12,7 @@ namespace WorshipPad.ViewModels;
 public partial class MainViewModel : ObservableObject
 {
     private readonly IBankService _bankService;
-    [ObservableProperty]
-    private double volume = 0.8;
-
+    
     public ObservableCollection<PadButton> Pads { get; }
     [ObservableProperty]
     private PadBank? selectedBank;
@@ -24,15 +22,25 @@ public partial class MainViewModel : ObservableObject
     public ObservableCollection<PadBank> Banks { get; }
     public IRelayCommand<PadBank> SelectBankCommand { get; }
     private readonly SettingsService _settings;
-    private readonly AudioPlayerService _audioPlayer;
-    [ObservableProperty]
+    private readonly PadLoaderService _padLoaderService;
+    private readonly IAudioPlayerService _audioPlayer;
+    private readonly AudioDeviceService _deviceService;
+    [ObservableProperty] 
     private string currentBank = "Nenhum banco";
     public IRelayCommand<PadButton> PlayPadCommand { get; }
     private PadButton? _currentPad;
     public IRelayCommand StopCommand { get; }
     public IRelayCommand<string> SelectAudioDeviceCommand { get; }
-    public MainViewModel(IBankService bankService)
+    public MainViewModel(IBankService bankService, IAudioPlayerService audioPlayer, PadLoaderService padLoaderService, SettingsService settings, AudioDeviceService deviceService)
     {
+        #region DI
+        _padLoaderService = padLoaderService;
+        _audioPlayer = audioPlayer;
+        _settings = settings;
+        _deviceService = deviceService;
+
+        #endregion
+
         #region Config bank
         _bankService = bankService;
         var padPath = Path.Combine(
@@ -41,11 +49,8 @@ public partial class MainViewModel : ObservableObject
             "Signature"
         );
 
-        var loader = new PadLoaderService();
-
-
         Pads = new ObservableCollection<PadButton>(
-            loader.LoadPads(padPath)
+            _padLoaderService.LoadPads(padPath)
         );
 
 
@@ -65,33 +70,21 @@ public partial class MainViewModel : ObservableObject
 
         #region Config Audio
 
-        _audioPlayer = new AudioPlayerService();
         StopCommand = new RelayCommand(StopPad);
         PlayPadCommand = new RelayCommand<PadButton>(PlayPad);
         #endregion
 
         #region Config Device
-        var deviceService = new AudioDeviceService();
         SelectAudioDeviceCommand = new RelayCommand<string>(SelectAudioDevice);
 
         AudioDevices = new ObservableCollection<string>(
-            deviceService.GetOutputDevices()
+            _deviceService.GetOutputDevices()
         );
+        _deviceService = deviceService;
         #endregion
 
         #region Config Settings
-        _settings = new SettingsService();
 
-        var savedDevice = _settings.LoadOutputDevice();
-
-
-        if (savedDevice != null &&
-           AudioDevices.Contains(savedDevice))
-        {
-            SelectedAudioDevice = savedDevice;
-
-            _audioPlayer.SetOutputDevice(savedDevice);
-        }
         #endregion
     }
 
@@ -108,13 +101,12 @@ public partial class MainViewModel : ObservableObject
         bank.IsSelected = true;
         CurrentBank = bank.Name;
 
-        var loader = new PadLoaderService();
 
 
         Pads.Clear();
 
 
-        foreach (var pad in loader.LoadPads(bank.FolderPath))
+        foreach (var pad in _padLoaderService.LoadPads(bank.FolderPath))
         {
             Pads.Add(pad);
         }
@@ -143,10 +135,6 @@ public partial class MainViewModel : ObservableObject
         {
             pad.IsPlaying = false;
         }
-    }
-    partial void OnVolumeChanged(double value)
-    {
-        _audioPlayer.Volume = (float)value;
     }
     private void SelectAudioDevice(string? device)
     {

@@ -1,13 +1,49 @@
-﻿using NAudio.Wave;
-using NAudio.CoreAudioApi;
+﻿using NAudio.CoreAudioApi;
+using NAudio.Wave;
+using System.Runtime;
 using System.Windows;
+using WorshipPad.Core.Enums;
+using WorshipPad.Core.Interfaces;
+using WorshipPad.Core.Models;
 
 namespace WorshipPad.Core.Services;
 
-public class AudioPlayerService
+public class AudioPlayerService : IAudioPlayerService
 {
-    private IWavePlayer? output;
+    private IAudioOutput? output;
     private AudioFileReader? reader;
+    private AudioSettings? _settings;
+    private readonly SettingsService _settingsService;
+    private readonly IAudioOutputFactory _outputFactory;
+    private string? _currentFile;
+    public AudioPlayerService(
+    AudioSettings audioSettings,
+    SettingsService settingsService,
+    IAudioOutputFactory outputFactory)
+    {
+        _settings = audioSettings;
+        _settingsService = settingsService;
+        _outputFactory = outputFactory;
+
+
+        _settings.OutputType =
+            _settingsService.LoadOutputType();
+
+
+        _settings.AsioDriver =
+            _settingsService.LoadAsioDriver();
+
+
+        var device =
+            _settingsService.LoadOutputDevice();
+
+
+        if (device != null)
+        {
+            SetOutputDevice(device);
+        }
+    }
+
     private MMDevice? _selectedDevice;
     public string? SelectedDeviceName { get; private set; }
     public float Volume
@@ -33,19 +69,13 @@ public class AudioPlayerService
         reader = new AudioFileReader(filePath);
 
 
-        if (_selectedDevice != null)
-        {
-            output = new WasapiOut(
-                _selectedDevice,
-                AudioClientShareMode.Shared,
-                true,
-                100
-            );
-        }
-        else
-        {
-            output = new WaveOutEvent();
-        }
+        reader.Volume = (float)_settingsService.LoadVolume();
+
+
+        output = _outputFactory.Create(
+            _settings,
+            _selectedDevice
+        );
 
 
         output.Init(reader);
@@ -83,6 +113,72 @@ public class AudioPlayerService
 
             await Task.Delay(duration / steps);
         }
+    }
+    public void ChangeOutputDevice(string deviceName)
+    {
+        bool wasPlaying = output != null;
+
+        var oldPosition = reader?.CurrentTime ?? TimeSpan.Zero;
+
+
+        SetOutputDevice(deviceName);
+
+
+        if (reader == null || !wasPlaying)
+            return;
+
+
+        output?.Stop();
+        output?.Dispose();
+
+
+        output = _outputFactory.Create(
+            _settings,
+            _selectedDevice
+        );
+
+
+        output.Init(reader);
+
+        reader.CurrentTime = oldPosition;
+
+        output.Play();
+    }
+    public void ChangeOutputType(AudioOutputType type)
+    {
+        bool wasPlaying = output != null;
+
+
+        if (reader == null || !wasPlaying)
+        {
+            _settings.OutputType = type;
+            return;
+        }
+
+
+        var currentPosition = reader.CurrentTime;
+
+
+        output?.Stop();
+        output?.Dispose();
+
+
+        _settings.OutputType = type;
+
+
+        output = _outputFactory.Create(
+            _settings,
+            _selectedDevice
+        );
+
+
+        output.Init(reader);
+
+
+        reader.CurrentTime = currentPosition;
+
+
+        output.Play();
     }
     public async Task FadeIn(int duration = 1000)
     {

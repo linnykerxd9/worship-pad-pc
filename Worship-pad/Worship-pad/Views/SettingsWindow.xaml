@@ -11,46 +11,95 @@
 
 
         <TextBlock
-            Text="Configurações"
-            Foreground="White"
-            FontSize="30"
-            HorizontalAlignment="Center"
-            Margin="0,0,0,30"/>
+        Text="Configurações"
+        Foreground="White"
+        FontSize="30"
+        HorizontalAlignment="Center"
+        Margin="0,0,0,30"/>
 
 
+        <!-- TIPO DE SAÍDA -->
 
         <TextBlock
-            Text="Saída de áudio"
+        Text="Tipo de saída"
+        Foreground="White"
+        FontSize="18"/>
+
+
+        <ComboBox
+    Width="300"
+    HorizontalAlignment="Left"
+    ItemsSource="{Binding OutputTypes}"
+    SelectedItem="{Binding SelectedOutputType, Mode=TwoWay}"
+    Margin="0,10,0,20"/>
+
+
+
+        <!-- WINDOWS -->
+
+        <StackPanel
+        Visibility="{Binding WindowsVisibility}">
+
+            <TextBlock
+            Text="Dispositivo Windows"
             Foreground="White"
             FontSize="18"/>
 
 
-        <ComboBox
+            <ComboBox
             Width="300"
             HorizontalAlignment="Left"
             ItemsSource="{Binding AudioDevices}"
             SelectedItem="{Binding SelectedAudioDevice}"
-            Margin="0,10,0,30"/>
+            Margin="0,10,0,20"/>
+
+        </StackPanel>
 
 
 
-        <TextBlock
-            Text="Volume inicial"
+        <!-- ASIO -->
+
+        <StackPanel
+        Visibility="{Binding AsioVisibility}">
+
+
+            <TextBlock
+            Text="Driver ASIO"
             Foreground="White"
             FontSize="18"/>
 
 
+           <ComboBox
+    Width="300"
+    HorizontalAlignment="Left"
+    ItemsSource="{Binding AsioDrivers}"
+    SelectedItem="{Binding SelectedAsioDriver, Mode=TwoWay}"
+    Margin="0,10,0,20"/>
+
+        </StackPanel>
+
+
+
+        <!-- VOLUME -->
+
+        <TextBlock
+        Text="Volume inicial"
+        Foreground="White"
+        FontSize="18"/>
+
+
         <Slider
-    Width="250"
-    Minimum="0"
-    Maximum="1"
-    Value="{Binding Volume, Mode=TwoWay}"
-    Margin="10"
-    IsMoveToPointEnabled="True"
-    SmallChange="0.01"
-    LargeChange="0.1"/>
+        Width="250"
+        Minimum="0"
+        Maximum="1"
+        Value="{Binding Volume, Mode=TwoWay}"
+        Margin="10"
+        IsMoveToPointEnabled="True"
+        SmallChange="0.01"
+        LargeChange="0.1"/>
 
 
     </StackPanel>
+
 
 </Window>

@@ -1,23 +1,31 @@
-﻿using System.Windows;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Input;
 using WorshipPad.Core.Services;
 using WorshipPad.ViewModels;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace WorshipPad.Views;
 
 public partial class MainWindow
 {
-    public MainWindow()
+
+    private readonly IServiceProvider _serviceProvider;
+
+
+    public MainWindow(
+        MainViewModel viewModel,
+        IServiceProvider serviceProvider)
     {
         InitializeComponent();
 
-        var bankService = new BankService(); // breakpoint aqui
+        DataContext = viewModel;
 
-        DataContext = new MainViewModel(bankService); // breakpoint aqui
+        _serviceProvider = serviceProvider;
     }
+
     private void AudioDeviceChanged(
     object sender,
     SelectionChangedEventArgs e)
@@ -35,11 +43,10 @@ public partial class MainWindow
     private void OpenSettings_Click(
     object sender,
     RoutedEventArgs e)
-    {
-        var window = new SettingsWindow();
+        {
+            var settingsWindow = _serviceProvider
+                .GetRequiredService<SettingsWindow>();
 
-        window.DataContext = DataContext;
-
-        window.ShowDialog();
-    }
+            settingsWindow.ShowDialog();
+        }
 }
