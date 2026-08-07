@@ -1,9 +1,9 @@
-﻿<Application x:Class="Worship_pad.App"
+﻿<Application x:Class="WorshipPad.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Worship_pad"
-             StartupUri="MainWindow.xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Application.Resources>
-         
+
     </Application.Resources>
+
 </Application>

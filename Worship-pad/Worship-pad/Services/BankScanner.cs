@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
-using Worship_pad.Core.Enums;
+using WorshipPad.Core.Enums;
+using WorshipPad.Core.Models;
 
 namespace Worship_pad.Services;
 
@@ -21,7 +22,7 @@ public static class BankScanner
 
             bank.Name = Path.GetFileName(folder);
 
-            bank.Folder = folder;
+            //bank.Folder = folder;
 
             foreach (string file in Directory.GetFiles(folder))
             {
@@ -29,7 +30,7 @@ public static class BankScanner
 
                 if (TryMap(name, out PadNote note))
                 {
-                    bank.Files[note] = file;
+                    //bank.Files[note] = file;
                 }
             }
 

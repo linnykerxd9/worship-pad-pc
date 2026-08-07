@@ -25,15 +25,4 @@ public static class PadHelper
     {
         return DisplayNames[note];
     }
-
-    public static IReadOnlyList<PadButton> CreateButtons()
-    {
-        return Enum.GetValues<PadNote>()
-            .Select(note => new PadButton
-            {
-                Note = note,
-                DisplayName = ToDisplayName(note)
-            })
-            .ToList();
-    }
 }

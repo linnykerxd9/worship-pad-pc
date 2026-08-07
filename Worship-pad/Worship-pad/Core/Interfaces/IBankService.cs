@@ -4,5 +4,5 @@ namespace WorshipPad.Core.Interfaces;
 
 public interface IBankService
 {
-    IReadOnlyList<PadBank> LoadBanks();
+    IReadOnlyList<PadBank> GetBanks();
 }

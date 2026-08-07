@@ -1,6 +1,7 @@
-﻿using WorshipPad.ViewModels;
+﻿using WorshipPad.Services;
+using WorshipPad.ViewModels;
 
-namespace WorshipPad;
+namespace WorshipPad.Views;
 
 public partial class MainWindow
 {
@@ -8,6 +9,8 @@ public partial class MainWindow
     {
         InitializeComponent();
 
-        DataContext = new MainViewModel();
+        var bankService = new BankService(); // breakpoint aqui
+
+        DataContext = new MainViewModel(bankService); // breakpoint aqui
     }
 }
