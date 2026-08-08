@@ -16,16 +16,16 @@ public class AudioOutputFactory : IAudioOutputFactory
             AudioOutputType.Windows =>
                 new WindowsAudioOutput(device),
 
-
             AudioOutputType.Asio =>
                 new AsioAudioOutput(
                     settings.AsioDriver
-                    ?? throw new Exception(
-                        "Driver ASIO não selecionado")),
-
+                        ?? throw new InvalidOperationException(
+                            "Driver ASIO não selecionado."),
+                    settings.AsioOutputChannel),
 
             _ =>
-                throw new ArgumentOutOfRangeException()
+                throw new ArgumentOutOfRangeException(
+                    nameof(settings.OutputType))
         };
     }
 }

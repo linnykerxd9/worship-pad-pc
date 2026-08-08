@@ -30,7 +30,10 @@ public partial class App : Application
         services.AddSingleton<AudioDeviceService>();
         services.AddSingleton<SettingsService>();
         services.AddSingleton<IAsioDeviceService, AsioDeviceService>();
+        services.AddSingleton<ILogService, LogService>();
 
+        services.AddTransient<LogsViewModel>();
+        services.AddTransient<LogsWindow>();
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsWindow>();
 
@@ -44,8 +47,54 @@ public partial class App : Application
 
         Services = services.BuildServiceProvider();
 
+        var log = Services.GetRequiredService<ILogService>();
 
-        var window = Services.GetRequiredService<MainWindow>();
+        // Exceptions da interface WPF
+        DispatcherUnhandledException += (sender, args) =>
+        {
+            log.Error(
+                "Exception não tratada na interface.",
+                args.Exception);
+
+            MessageBox.Show(
+                "Ocorreu um erro no WorshipPad.\n\n" +
+                "O erro foi registrado nos logs.",
+                "Erro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            // Impede o aplicativo de fechar automaticamente
+            args.Handled = true;
+        };
+
+        // Exceptions não tratadas em outras threads
+        AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+        {
+            if (args.ExceptionObject is Exception exception)
+            {
+                log.Critical(
+                    "Exception não tratada no aplicativo.",
+                    exception);
+            }
+            else
+            {
+                log.Critical(
+                    "Exception não tratada no aplicativo: " +
+                    args.ExceptionObject);
+            }
+        };
+
+        TaskScheduler.UnobservedTaskException += (sender, args) =>
+        {
+            log.Error(
+                "Exception não observada em Task.",
+                args.Exception);
+
+            args.SetObserved();
+        };
+        log.Info("WorshipPad iniciado.");
+        var window =
+            Services.GetRequiredService<MainWindow>();
 
         window.Show();
     }

@@ -1,6 +1,6 @@
-﻿namespace WorshipPad.Core.Interfaces;
-
-public interface IAsioDeviceService
+﻿public interface IAsioDeviceService
 {
     IReadOnlyList<string> GetAsioDrivers();
+
+    int GetOutputChannelCount(string driverName);
 }

@@ -1,0 +1,328 @@
+﻿[23:18:20] [INFO] Iniciando pad: B.m4a
+
+[23:18:20] [INFO] Pad iniciado com sucesso: B.m4a
+
+[23:33:05] [INFO] WorshipPad iniciado.
+
+[23:33:05] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:33:33] [INFO] WorshipPad iniciado.
+
+[23:33:33] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:38:29] [INFO] WorshipPad iniciado.
+
+[23:38:29] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:38:34] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:38:35] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:38:37] [WARNING] Não foi possível consultar os canais do driver ASIO 'X-AIR ASIO Driver'. O dispositivo pode não estar conectado.
+
+[23:38:37] [ERROR] Detalhes da falha ao consultar o driver ASIO 'X-AIR ASIO Driver'.
+Exception: System.InvalidOperationException
+Message: No device is connected to the PC.
+StackTrace:
+   at NAudio.Wave.Asio.AsioDriverExt..ctor(AsioDriver driver)
+   at NAudio.Wave.AsioOut.InitFromName(String driverName)
+   at NAudio.Wave.AsioOut..ctor(String driverName)
+   at WorshipPad.Core.Services.AsioDeviceService.GetOutputChannelCount(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\Services\AsioDeviceService.cs:line 14
+   at WorshipPad.ViewModels.SettingsViewModel.LoadAsioOutputChannels(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\ViewModels\SettingsViewModel.cs:line 248
+
+
+[23:38:37] [INFO] Tela de configurações carregada. Tipo: Windows, Dispositivo: Alto-falantes (Realtek High Definition Audio), Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:38:45] [INFO] Iniciando pad: Asharp.m4a
+
+[23:38:45] [INFO] Pad iniciado com sucesso: Asharp.m4a
+
+[23:38:49] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:38:49] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:38:57] [INFO] Iniciando pad: d_sharp.mp3
+
+[23:38:57] [INFO] Pad iniciado com sucesso: d_sharp.mp3
+
+[23:39:04] [INFO] Iniciando pad: f_sharp.mp3
+
+[23:39:04] [INFO] Pad iniciado com sucesso: f_sharp.mp3
+
+[23:39:09] [INFO] Iniciando pad: a.mp3
+
+[23:39:09] [INFO] Pad iniciado com sucesso: a.mp3
+
+[23:39:15] [WARNING] Não foi possível consultar os canais do driver ASIO 'X-AIR ASIO Driver'. O dispositivo pode não estar conectado.
+
+[23:39:15] [ERROR] Detalhes da falha ao consultar o driver ASIO 'X-AIR ASIO Driver'.
+Exception: System.InvalidOperationException
+Message: No device is connected to the PC.
+StackTrace:
+   at NAudio.Wave.Asio.AsioDriverExt..ctor(AsioDriver driver)
+   at NAudio.Wave.AsioOut.InitFromName(String driverName)
+   at NAudio.Wave.AsioOut..ctor(String driverName)
+   at WorshipPad.Core.Services.AsioDeviceService.GetOutputChannelCount(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\Services\AsioDeviceService.cs:line 14
+   at WorshipPad.ViewModels.SettingsViewModel.LoadAsioOutputChannels(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\ViewModels\SettingsViewModel.cs:line 248
+
+
+[23:39:15] [INFO] Tela de configurações carregada. Tipo: Windows, Dispositivo: Alto-falantes (Realtek High Definition Audio), Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:40:08] [INFO] WorshipPad iniciado.
+
+[23:40:08] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:40:20] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:40:20] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:42:39] [INFO] WorshipPad iniciado.
+
+[23:42:39] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:43:18] [INFO] WorshipPad iniciado.
+
+[23:43:18] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:43:28] [INFO] Iniciando pad: a_sharp_minor.m4a
+
+[23:43:28] [INFO] Pad iniciado com sucesso: a_sharp_minor.m4a
+
+[23:43:35] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:43:36] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:45:23] [INFO] WorshipPad iniciado.
+
+[23:45:23] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:47:26] [INFO] WorshipPad iniciado.
+
+[23:47:26] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:47:27] [INFO] Iniciando pad: Asharp.m4a
+
+[23:47:27] [INFO] Pad iniciado com sucesso: Asharp.m4a
+
+[23:48:15] [INFO] WorshipPad iniciado.
+
+[23:48:15] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:48:21] [INFO] Iniciando pad: B.m4a
+
+[23:48:21] [INFO] Pad iniciado com sucesso: B.m4a
+
+[23:48:23] [INFO] Iniciando pad: Asharp.m4a
+
+[23:48:23] [INFO] Pad iniciado com sucesso: Asharp.m4a
+
+[23:48:25] [WARNING] Não foi possível consultar os canais do driver ASIO 'X-AIR ASIO Driver'. O dispositivo pode não estar conectado.
+
+[23:48:25] [ERROR] Detalhes da falha ao consultar o driver ASIO 'X-AIR ASIO Driver'.
+Exception: System.InvalidOperationException
+Message: No device is connected to the PC.
+StackTrace:
+   at NAudio.Wave.Asio.AsioDriverExt..ctor(AsioDriver driver)
+   at NAudio.Wave.AsioOut.InitFromName(String driverName)
+   at NAudio.Wave.AsioOut..ctor(String driverName)
+   at WorshipPad.Core.Services.AsioDeviceService.GetOutputChannelCount(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\Services\AsioDeviceService.cs:line 14
+   at WorshipPad.ViewModels.SettingsViewModel.LoadAsioOutputChannels(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\ViewModels\SettingsViewModel.cs:line 248
+
+
+[23:48:25] [INFO] Tela de configurações carregada. Tipo: Windows, Dispositivo: Alto-falantes (Realtek High Definition Audio), Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:48:40] [INFO] Iniciando pad: b_minor.m4a
+
+[23:48:40] [INFO] Pad iniciado com sucesso: b_minor.m4a
+
+[23:48:45] [INFO] Iniciando pad: b.mp3
+
+[23:48:45] [INFO] Pad iniciado com sucesso: b.mp3
+
+[23:51:08] [INFO] WorshipPad iniciado.
+
+[23:51:08] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:51:08] [INFO] Atualização dos bancos iniciada.
+
+[23:51:08] [INFO] Foram encontrados 4 bancos no disco.
+
+[23:51:08] [INFO] Banco encontrado: Signature (12 pads)
+
+[23:51:08] [INFO] Banco encontrado: teste (0 pads)
+
+[23:51:08] [INFO] Banco encontrado: Worship Maior (12 pads)
+
+[23:51:08] [INFO] Banco encontrado: Worship Menor (12 pads)
+
+[23:51:08] [INFO] Banco selecionado: Signature
+
+[23:51:08] [INFO] Pads carregados: 12
+
+[23:51:13] [INFO] Atualização dos bancos iniciada.
+
+[23:51:13] [INFO] Foram encontrados 4 bancos no disco.
+
+[23:51:13] [INFO] Banco encontrado: Signature (12 pads)
+
+[23:51:13] [INFO] Banco encontrado: teste (0 pads)
+
+[23:51:13] [INFO] Banco encontrado: Worship Maior (12 pads)
+
+[23:51:13] [INFO] Banco encontrado: Worship Menor (12 pads)
+
+[23:51:13] [INFO] Banco selecionado: Signature
+
+[23:51:13] [INFO] Pads carregados: 12
+
+[23:51:38] [INFO] Atualização dos bancos iniciada.
+
+[23:51:56] [INFO] Foram encontrados 4 bancos no disco.
+
+[23:51:56] [INFO] Banco encontrado: Signature (12 pads)
+
+[23:51:56] [INFO] Banco encontrado: teste (0 pads)
+
+[23:51:56] [INFO] Banco encontrado: Worship Maior (12 pads)
+
+[23:51:56] [INFO] Banco encontrado: Worship Menor (12 pads)
+
+[23:51:56] [INFO] Banco selecionado: Signature
+
+[23:51:56] [INFO] Pads carregados: 12
+
+[23:52:00] [INFO] Atualização dos bancos iniciada.
+
+[23:54:30] [INFO] WorshipPad iniciado.
+
+[23:54:30] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:54:30] [INFO] Atualização dos bancos iniciada.
+
+[23:54:33] [INFO] Foram encontrados 3 bancos no disco.
+
+[23:54:33] [INFO] Banco encontrado: Signature (12 pads)
+
+[23:54:33] [INFO] Banco encontrado: Worship Maior (12 pads)
+
+[23:54:33] [INFO] Banco encontrado: Worship Menor (12 pads)
+
+[23:54:33] [INFO] Banco selecionado: Signature
+
+[23:54:33] [INFO] Pads carregados: 12
+
+[23:56:17] [INFO] WorshipPad iniciado.
+
+[23:56:17] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:56:17] [INFO] Atualização dos bancos iniciada.
+
+[23:56:17] [INFO] Foram encontrados 3 bancos no disco.
+
+[23:56:17] [INFO] Banco encontrado: Worship Maior (12 pads)
+
+[23:56:17] [INFO] Banco encontrado: Worship Menor (12 pads)
+
+[23:56:17] [INFO] Banco encontrado: Signature (12 pads)
+
+[23:56:17] [INFO] Banco selecionado: Worship Maior
+
+[23:56:17] [INFO] Pads carregados: 12
+
+[23:57:05] [INFO] WorshipPad iniciado.
+
+[23:57:06] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:57:06] [INFO] Atualização dos bancos iniciada.
+
+[23:57:06] [INFO] Foram encontrados 3 bancos no disco.
+
+[23:57:06] [INFO] Banco encontrado: PadPlayer Online (12 pads)
+
+[23:57:06] [INFO] Banco encontrado: Worship App Maior (12 pads)
+
+[23:57:06] [INFO] Banco encontrado: Worship App Menor (12 pads)
+
+[23:57:06] [INFO] Banco selecionado: PadPlayer Online
+
+[23:57:06] [INFO] Pads carregados: 12
+
+[23:57:09] [INFO] Iniciando pad: Asharp.m4a
+
+[23:57:09] [INFO] Pad iniciado com sucesso: Asharp.m4a
+
+[23:57:16] [INFO] Iniciando pad: B.m4a
+
+[23:57:16] [INFO] Pad iniciado com sucesso: B.m4a
+
+[23:57:23] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:57:23] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:57:28] [INFO] Iniciando pad: a.mp3
+
+[23:57:28] [INFO] Pad iniciado com sucesso: a.mp3
+
+[23:57:30] [INFO] Iniciando pad: a.mp3
+
+[23:57:30] [INFO] Pad iniciado com sucesso: a.mp3
+
+[23:58:01] [INFO] WorshipPad iniciado.
+
+[23:58:01] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:58:01] [INFO] Atualização dos bancos iniciada.
+
+[23:58:01] [INFO] Foram encontrados 3 bancos no disco.
+
+[23:58:01] [INFO] Banco encontrado: PadPlayer Online (12 pads)
+
+[23:58:01] [INFO] Banco encontrado: Worship App Maior (12 pads)
+
+[23:58:01] [INFO] Banco encontrado: Worship App Menor (12 pads)
+
+[23:58:01] [INFO] Banco selecionado: PadPlayer Online
+
+[23:58:01] [INFO] Pads carregados: 12
+
+[23:58:40] [INFO] WorshipPad iniciado.
+
+[23:58:40] [INFO] Configuração de áudio carregada. Tipo: Windows, Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+
+[23:58:40] [INFO] Atualização dos bancos iniciada.
+
+[23:58:40] [INFO] Foram encontrados 3 bancos no disco.
+
+[23:58:40] [INFO] Banco encontrado: Worship App Maior (12 pads)
+
+[23:58:40] [INFO] Banco encontrado: Worship App Menor (12 pads)
+
+[23:58:40] [INFO] Banco encontrado: PadPlayer Online (12 pads)
+
+[23:58:40] [INFO] Banco selecionado: Worship App Maior
+
+[23:58:40] [INFO] Pads carregados: 12
+
+[23:58:54] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:58:54] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:59:02] [INFO] Iniciando pad: a_sharp.mp3
+
+[23:59:02] [INFO] Pad iniciado com sucesso: a_sharp.mp3
+
+[23:59:06] [WARNING] Não foi possível consultar os canais do driver ASIO 'X-AIR ASIO Driver'. O dispositivo pode não estar conectado.
+
+[23:59:06] [ERROR] Detalhes da falha ao consultar o driver ASIO 'X-AIR ASIO Driver'.
+Exception: System.InvalidOperationException
+Message: No device is connected to the PC.
+StackTrace:
+   at NAudio.Wave.Asio.AsioDriverExt..ctor(AsioDriver driver)
+   at NAudio.Wave.AsioOut.InitFromName(String driverName)
+   at NAudio.Wave.AsioOut..ctor(String driverName)
+   at WorshipPad.Core.Services.AsioDeviceService.GetOutputChannelCount(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\Services\AsioDeviceService.cs:line 14
+   at WorshipPad.ViewModels.SettingsViewModel.LoadAsioOutputChannels(String driverName) in C:\Users\linny\Desktop\tudo\Pad PC\worship-pad-pc\Worship-pad\Worship-pad\ViewModels\SettingsViewModel.cs:line 248
+
+
+[23:59:06] [INFO] Tela de configurações carregada. Tipo: Windows, Dispositivo: Alto-falantes (Realtek High Definition Audio), Driver ASIO: X-AIR ASIO Driver, Canal ASIO: 1, Volume: 0,74
+

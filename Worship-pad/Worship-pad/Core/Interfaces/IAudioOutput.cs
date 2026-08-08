@@ -2,13 +2,11 @@
 
 namespace WorshipPad.Core.Interfaces;
 
-public interface IAudioOutput
+public interface IAudioOutput : IDisposable
 {
     void Init(WaveStream stream);
 
     void Play();
 
     void Stop();
-
-    void Dispose();
 }

@@ -12,7 +12,7 @@ public interface IAudioPlayerService
     void PlayLoop(string filePath);
 
     void Stop();
-
+    void ChangeOutputChannel(int channel);
     void SetOutputDevice(string deviceName);
     void ChangeOutputType(AudioOutputType value);
     void ChangeOutputDevice(string value);

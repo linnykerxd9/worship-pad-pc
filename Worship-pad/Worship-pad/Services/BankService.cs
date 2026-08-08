@@ -11,32 +11,81 @@ public class BankService : IBankService
 
     public BankService()
     {
-        _padsFolder = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "Pads"
-        );
+        _padsFolder =
+            Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Pads");
     }
 
 
     public IReadOnlyList<PadBank> GetBanks()
     {
         if (!Directory.Exists(_padsFolder))
-            return new List<PadBank>();
+            return Array.Empty<PadBank>();
 
 
         return Directory
-            .GetDirectories(_padsFolder)
+            .EnumerateDirectories(_padsFolder)
             .Select(folder => new PadBank
             {
                 Name = Path.GetFileName(folder),
+
                 FolderPath = folder,
-                PadCount = Directory
-                .EnumerateFiles(folder)
-                .Count(file =>
-                    file.EndsWith(".wav", StringComparison.OrdinalIgnoreCase)
-                 || file.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase)
-                 || file.EndsWith(".m4a", StringComparison.OrdinalIgnoreCase))
-                    })
+
+                PadCount =
+                    Directory
+                        .EnumerateFiles(folder)
+                        .Count(file =>
+                            file.EndsWith(
+                                ".wav",
+                                StringComparison.OrdinalIgnoreCase)
+                            ||
+                            file.EndsWith(
+                                ".mp3",
+                                StringComparison.OrdinalIgnoreCase)
+                            ||
+                            file.EndsWith(
+                                ".m4a",
+                                StringComparison.OrdinalIgnoreCase))
+            })
+            .OrderBy(bank =>
+                bank.Name.Equals(
+                    "Worship App Maior",
+                    StringComparison.OrdinalIgnoreCase)
+                    ? 0
+                    :
+                bank.Name.Equals(
+                    "Worship App Menor",
+                    StringComparison.OrdinalIgnoreCase)
+                    ? 1
+                    :
+                    2)
+            .ThenBy(bank => bank.Name)
             .ToList();
+    }
+
+
+    private static bool IsAudioFile(
+        string file)
+    {
+        var extension =
+            Path.GetExtension(file);
+
+
+        return
+            string.Equals(
+                extension,
+                ".mp3",
+                StringComparison.OrdinalIgnoreCase)
+            ||
+            string.Equals(
+                extension,
+                ".m4a",
+                StringComparison.OrdinalIgnoreCase)
+            ||
+            string.Equals(
+                extension,
+                ".wav",
+                StringComparison.OrdinalIgnoreCase);
     }
 }

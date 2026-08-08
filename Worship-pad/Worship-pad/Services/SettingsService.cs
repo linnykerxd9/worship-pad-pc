@@ -121,4 +121,18 @@ public class SettingsService
     {
         return LoadSettings().Volume;
     }
+
+    public void SaveAsioOutputChannel(int channel)
+    {
+        var settings = LoadSettings();
+
+        settings.AsioOutputChannel = channel;
+
+        SaveSettings(settings);
+    }
+
+    public int LoadAsioOutputChannel()
+    {
+        return LoadSettings().AsioOutputChannel;
+    }
 }

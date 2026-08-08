@@ -1,52 +1,45 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using System.Windows.Input;
-using WorshipPad.Core.Services;
 using WorshipPad.ViewModels;
 
 namespace WorshipPad.Views;
 
-public partial class MainWindow
+public partial class MainWindow : Window
 {
-
-    private readonly IServiceProvider _serviceProvider;
-
+    private readonly IServiceProvider _services;
 
     public MainWindow(
         MainViewModel viewModel,
-        IServiceProvider serviceProvider)
+        IServiceProvider services)
     {
         InitializeComponent();
 
         DataContext = viewModel;
 
-        _serviceProvider = serviceProvider;
-    }
-
-    private void AudioDeviceChanged(
-    object sender,
-    SelectionChangedEventArgs e)
-    {
-        if (sender is ComboBox combo &&
-           combo.SelectedItem is string device)
-        {
-            if (DataContext is MainViewModel vm)
-            {
-                vm.SelectAudioDeviceCommand.Execute(device);
-            }
-        }
+        _services = services;
     }
 
     private void OpenSettings_Click(
-    object sender,
-    RoutedEventArgs e)
-        {
-            var settingsWindow = _serviceProvider
-                .GetRequiredService<SettingsWindow>();
+        object sender,
+        RoutedEventArgs e)
+    {
+        var settingsWindow =
+            _services.GetRequiredService<SettingsWindow>();
 
-            settingsWindow.ShowDialog();
-        }
+        settingsWindow.Owner = this;
+
+        settingsWindow.ShowDialog();
+    }
+
+    private void OpenLogs_Click(
+        object sender,
+        RoutedEventArgs e)
+    {
+        var logsWindow =
+            _services.GetRequiredService<LogsWindow>();
+
+        logsWindow.Owner = this;
+
+        logsWindow.ShowDialog();
+    }
 }
