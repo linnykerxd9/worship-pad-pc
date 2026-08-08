@@ -9,12 +9,9 @@ public class SettingsService
     private readonly string _filePath;
 
 
-    public SettingsService()
+    public SettingsService(AppDataService appData)
     {
-        _filePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "settings.json"
-        );
+        _filePath = appData.SettingsFile;
     }
 
 

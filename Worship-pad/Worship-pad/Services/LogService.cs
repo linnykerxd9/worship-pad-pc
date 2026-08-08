@@ -18,12 +18,9 @@ public class LogService : ILogService
         new();
 
 
-    public LogService()
+    public LogService(AppDataService appData)
     {
-        _logDirectory =
-            Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Logs");
+        _logDirectory = appData.LogsFolder;
 
         Directory.CreateDirectory(
             _logDirectory);

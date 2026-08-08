@@ -36,6 +36,7 @@ public partial class App : Application
         services.AddTransient<LogsWindow>();
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsWindow>();
+        services.AddSingleton<AppDataService>();
 
         // ViewModels
         services.AddTransient<MainViewModel>();
