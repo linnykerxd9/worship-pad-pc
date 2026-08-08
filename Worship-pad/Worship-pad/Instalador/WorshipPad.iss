@@ -3,7 +3,6 @@ AppName=WorshipPad
 AppVersion=1.0.0
 DefaultDirName={autopf}\WorshipPad
 DefaultGroupName=WorshipPad
-SetupIconFile=Icons\Worship.ico
 ArchitecturesInstallIn64BitMode=x64
 PrivilegesRequired=admin
 

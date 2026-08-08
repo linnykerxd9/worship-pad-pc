@@ -8,20 +8,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-	<PropertyGroup>
-		<ApplicationIcon>Instalador\Icons\Worship.ico</ApplicationIcon>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<Content Include="Instalador\Icons\Worship.ico" />
-	</ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Audio\Effects\" />
-    <Folder Include="Audio\Outputs\" />
-    <Folder Include="Instalador\Icons\" />
-  </ItemGroup>
 	
 	<ItemGroup>
 		<Content Include="Pads\**\*">
