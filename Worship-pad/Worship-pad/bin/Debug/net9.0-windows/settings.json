@@ -1,7 +1,0 @@
-{
-  "OutputDevice": "Alto-falantes (Realtek High Definition Audio)",
-  "OutputType": 0,
-  "AsioDriver": "X-AIR ASIO Driver",
-  "AsioOutputChannel": 1,
-  "Volume": 0.7442301252427835
-}

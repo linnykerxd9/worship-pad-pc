@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\instalador\\worshippad.iss||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\instalador\\worshippad.iss||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|c:\\users\\linny\\desktop\\tudo\\pad pc\\worship-pad-pc\\worship-pad\\worship-pad\\services\\bankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0E818B3D-0429-44C1-8D53-CB217A3F8E50}|Worship-pad\\Worship-pad.csproj|solutionrelative:worship-pad\\services\\bankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -183,11 +187,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "IAudioPlayerService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAudioPlayerService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IAudioPlayerService.cs",
@@ -200,7 +204,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "WorshipPad.iss",
+              "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Instalador\\WorshipPad.iss",
+              "RelativeDocumentMoniker": "Worship-pad\\Instalador\\WorshipPad.iss",
+              "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Instalador\\WorshipPad.iss",
+              "RelativeToolTip": "Worship-pad\\Instalador\\WorshipPad.iss",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALiSURBVDhPhZNtaJVlGMd/9/2c85xztnbcy1G33EtORM9aL04wbbTGIg0jJNAsilH5EroPK/oSCEEvow/Wp4hQckiBRq5IMFj5QbJUKALHRGVWnhgOoTPb1tkO53me\u002B7r6cJxsFPSDG264r\u002BvHdd/cf8MCDh79RkUUVUUXHtzGGkNQmsNa\u002B8yBV7afQHVx2XtHTur/MXD4S33n4xM6cGjoWQC7UGBEAJgqFBkdn2YiX0DFIaJEopRCRxCEbOhoR1SPDxwa2hFbKPhrZoa3zk4yMum4\u002Bbdj5HqR\u002BsINPngqw9bOtYgCqpz/eYSE7\u002BPEfeHNN9d0v/x0wxO9O3uyGR5bmaQ546NVcX6a9Tk\u002BdJZMlKfj3lVsXNfGpo4sXevb\u002BPGXy\u002BUr2OVZb/mWfZ93ZhvorI/TURenNR2jqcpjybIKaG3h1Y9OMvbrH4ROCAJHKXK4KCoLpLa9L1F/j99QAYXAMV5wTBaF6UCZK0XcXWtpWrOC9wePEYSOUJQwUkQc5Tfw7upamgq5ORsxNhWR8Ay5GcfFfMj2ZsOne3qAHo4Nn6EUhFgvRswqTqQsqKsLa3atS9J3bppVNQl8a7gx68hN/EkxyHG\u002BVXh4dSNWIXSKUUfcs6gKMZNKx9/tf6H7ypXfuXVtjlvVdWAMFKa4P13gyPMbkLlpfhi9Sn6mQCSKUSVygjqHVWXbji2P2r2PrObJ9AQb5Sr7VuS50NvCyOuPk/ttjIee62fwq2GW1i7DqSF0ghNFVInhosuj13J0P7CWU2/svPMnLl0fZ3Pfm5w\u002BfQ6CIpva7yO7po0gchgoC1x5T2XDyoEXd\u002B/ub2luqUzXZvj61HcMf/s9qepqutY/yP69L9HU2IgTQUQwxrCk0ufw4GdlwTz7DxzU3l170NuF1lqs9ZD5xjvZKQs\u002BGTy6OAvJZIp00ied9KmuSJJO\u002BlT6HlWJGOmUT9X8qvDBWEAXT/Da2x\u002BqiPwrpf\u002BFMQZrLf8AHQ1sZT8io14AAAAASUVORK5CYII=",
+              "WhenOpened": "2026-08-08T03:04:21.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "Worship-pad\\ViewModels\\MainViewModel.cs",
@@ -213,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "LogsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\LogsWindow.xaml",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\LogsWindow.xaml",
@@ -224,20 +241,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BankService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\BankService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\BankService.cs",
               "ToolTip": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\BankService.cs",
               "RelativeToolTip": "Worship-pad\\Services\\BankService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAqwEAAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAqwDkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-07T00:34:34.144Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LogsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\ViewModels\\LogsViewModel.cs",
               "RelativeDocumentMoniker": "Worship-pad\\ViewModels\\LogsViewModel.cs",
@@ -250,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\MainWindow.xaml",
@@ -262,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PadLoaderService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\PadLoaderService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\PadLoaderService.cs",
@@ -275,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "config.json",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Pads\\config.json",
               "RelativeDocumentMoniker": "Worship-pad\\Pads\\config.json",
@@ -287,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PadNote.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Enums\\PadNote.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Enums\\PadNote.cs",
@@ -299,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ILogService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\ILogService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\ILogService.cs",
@@ -311,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\App.xaml.cs",
               "RelativeDocumentMoniker": "Worship-pad\\App.xaml.cs",
@@ -323,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "LogService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\LogService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\LogService.cs",
@@ -335,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "LogsWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\LogsWindow.xaml.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\LogsWindow.xaml.cs",
@@ -347,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "SettingsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\SettingsWindow.xaml",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\SettingsWindow.xaml",
@@ -358,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\App.xaml",
               "RelativeDocumentMoniker": "Worship-pad\\App.xaml",
@@ -370,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AsioAudioOutput.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\AsioAudioOutput.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\AsioAudioOutput.cs",
@@ -382,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\MainWindow.xaml.cs",
@@ -394,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Worship-pad.csproj",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Worship-pad.csproj",
               "RelativeDocumentMoniker": "Worship-pad\\Worship-pad.csproj",
@@ -406,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "LogLevelToBrushConverter.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Converters\\LogLevelToBrushConverter.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Converters\\LogLevelToBrushConverter.cs",
@@ -418,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "SettingsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\ViewModels\\SettingsViewModel.cs",
               "RelativeDocumentMoniker": "Worship-pad\\ViewModels\\SettingsViewModel.cs",
@@ -430,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "LogEntry.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\LogEntry.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\LogEntry.cs",
@@ -442,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AudioPlayerService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\AudioPlayerService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\AudioPlayerService.cs",
@@ -454,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "IAudioOutputFactory.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAudioOutputFactory.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IAudioOutputFactory.cs",
@@ -466,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "LogLevel.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Enums\\LogLevel.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Enums\\LogLevel.cs",
@@ -478,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "AsioDeviceService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\AsioDeviceService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\AsioDeviceService.cs",
@@ -490,7 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "MonoSampleProvider.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\MonoSampleProvider.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\MonoSampleProvider.cs",
@@ -502,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "AudioOutputFactory.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\AudioOutputFactory.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\AudioOutputFactory.cs",
@@ -514,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "SettingsWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Views\\SettingsWindow.xaml.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Views\\SettingsWindow.xaml.cs",
@@ -526,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "AudioSettings.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\AudioSettings.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\AudioSettings.cs",
@@ -538,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "IAudioOutput.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAudioOutput.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IAudioOutput.cs",
@@ -550,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "WorshipPad.ViewModels.SettingsViewModel.g.cs",
               "DocumentMoniker": "C:\\Users\\linny\\AppData\\Local\\Temp\\.vsdbgsrc\\83ba89d11bcfc431bf1176971409aee13f99fb65\\WorshipPad.ViewModels.SettingsViewModel.g.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\83ba89d11bcfc431bf1176971409aee13f99fb65\\WorshipPad.ViewModels.SettingsViewModel.g.cs",
@@ -562,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "IAsioDeviceService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Interfaces\\IAsioDeviceService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Interfaces\\IAsioDeviceService.cs",
@@ -574,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "SettingsService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\SettingsService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\SettingsService.cs",
@@ -586,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "AudioDeviceService.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\AudioDeviceService.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\AudioDeviceService.cs",
@@ -598,7 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "AudioOutputChannel.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\AudioOutputChannel.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\AudioOutputChannel.cs",
@@ -610,7 +627,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "AppSettings.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\AppSettings.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\AppSettings.cs",
@@ -622,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "PadPlayer.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Audio\\PadPlayer.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Audio\\PadPlayer.cs",
@@ -634,7 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "settings.json",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\bin\\Debug\\net9.0-windows\\settings.json",
               "RelativeDocumentMoniker": "Worship-pad\\bin\\Debug\\net9.0-windows\\settings.json",
@@ -646,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "AudioOutputType.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Enums\\AudioOutputType.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Enums\\AudioOutputType.cs",
@@ -658,7 +675,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "WindowsAudioOutput.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Services\\WindowsAudioOutput.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Services\\WindowsAudioOutput.cs",
@@ -670,7 +687,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "PadButton.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadButton.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\PadButton.cs",
@@ -682,7 +699,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "PadBank.cs",
               "DocumentMoniker": "C:\\Users\\linny\\Desktop\\tudo\\Pad PC\\worship-pad-pc\\Worship-pad\\Worship-pad\\Core\\Models\\PadBank.cs",
               "RelativeDocumentMoniker": "Worship-pad\\Core\\Models\\PadBank.cs",
@@ -694,7 +711,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "PadBank.g.cs",
               "DocumentMoniker": "C:\\Users\\linny\\AppData\\Local\\Temp\\VSGeneratedDocuments\\1da422a3-b4f6-f44b-833c-8a8ca587a946\\PadBank.g.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\Temp\\VSGeneratedDocuments\\1da422a3-b4f6-f44b-833c-8a8ca587a946\\PadBank.g.cs",
@@ -706,7 +723,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "WorshipPad.Core.Models.PadButton.g.cs",
               "DocumentMoniker": "C:\\Users\\linny\\AppData\\Local\\Temp\\VSGeneratedDocuments\\bc4125a7-84ca-6bf9-b4ea-3e5cbfb840a1\\WorshipPad.Core.Models.PadButton.g.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\Temp\\VSGeneratedDocuments\\bc4125a7-84ca-6bf9-b4ea-3e5cbfb840a1\\WorshipPad.Core.Models.PadButton.g.cs",
