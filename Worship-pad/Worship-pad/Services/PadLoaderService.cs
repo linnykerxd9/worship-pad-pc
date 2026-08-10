@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
+using System.Text;
 using WorshipPad.Core.Enums;
 using WorshipPad.Core.Helpers;
 using WorshipPad.Core.Models;
@@ -10,32 +12,23 @@ public class PadLoaderService
     public IReadOnlyList<PadButton> LoadPads(
         string folderPath)
     {
-        var pads =
-            new List<PadButton>();
-
+        var pads = new List<PadButton>();
 
         if (!Directory.Exists(folderPath))
             return pads;
 
 
-        var files =
-            Directory.EnumerateFiles(folderPath)
-            .Where(file =>
-            {
-                var extension =
-                    Path.GetExtension(file);
+        // =====================================================
+        // ARQUIVOS DE ÁUDIO
+        // =====================================================
 
-                return
-                    string.Equals(
-                        extension,
-                        ".m4a",
-                        StringComparison.OrdinalIgnoreCase)
-                    ||
-                    string.Equals(
-                        extension,
-                        ".mp3",
-                        StringComparison.OrdinalIgnoreCase);
-            });
+        var files =
+            Directory
+                .EnumerateFiles(folderPath)
+                .Where(IsAudioFile)
+                .OrderBy(
+                    file => Path.GetFileName(file),
+                    StringComparer.OrdinalIgnoreCase);
 
 
         foreach (var file in files)
@@ -44,23 +37,46 @@ public class PadLoaderService
                 Path.GetFileNameWithoutExtension(file);
 
 
-            if (!TryParseNote(
+            // =================================================
+            // TENTA IDENTIFICAR COMO PAD
+            // =================================================
+
+            if (TryGetPadNote(
                     fileName,
                     out var note))
             {
+                pads.Add(
+                    new PadButton
+                    {
+                        Note = note,
+
+                        DisplayName =
+                            PadHelper.ToDisplayName(note),
+
+                        AudioPath = file,
+
+                        IsLooping = true
+                    });
+
                 continue;
             }
 
 
+            // =================================================
+            // ÁUDIO COMUM
+            // =================================================
+
             pads.Add(
                 new PadButton
                 {
-                    Note = note,
+                    Note = null,
 
                     DisplayName =
-                        PadHelper.ToDisplayName(note),
+                        FormatAudioName(fileName),
 
-                    AudioPath = file
+                    AudioPath = file,
+
+                    IsLooping = true
                 });
         }
 
@@ -69,63 +85,237 @@ public class PadLoaderService
     }
 
 
-    private static bool TryParseNote(
+    // =========================================================
+    // IDENTIFICAR NOTA
+    // =========================================================
+
+    private static bool TryGetPadNote(
         string fileName,
         out PadNote note)
     {
         note = default;
 
 
-        // Remove o sufixo _minor.
+        if (string.IsNullOrWhiteSpace(fileName))
+            return false;
+
+
+        // -----------------------------------------------------
+        // Normaliza apenas para identificar a nota.
         //
-        // a_minor
-        //      ↓
-        // a
+        // Exemplos:
         //
-        // a_sharp_minor
-        //      ↓
         // a_sharp
+        // a_sharp_minor
+        // a_sharp_major
+        // a_minor
+        // a_major
+        //
+        // viram:
+        //
+        // a_sharp
+        // a_sharp
+        // a
+        // a
+        // a
+        // -----------------------------------------------------
 
-        string normalized =
-            fileName;
+        var normalized =
+            fileName
+                .Trim()
+                .ToLowerInvariant();
 
 
-        if (normalized.EndsWith(
-                "_minor",
-                StringComparison.OrdinalIgnoreCase))
+        // Remove informações de modo.
+        normalized =
+            normalized
+                .Replace("_minor", "")
+                .Replace("_major", "")
+                .Replace(" minor", "")
+                .Replace(" major", "");
+
+
+        // -----------------------------------------------------
+        // Remove possíveis espaços extras no final.
+        // -----------------------------------------------------
+
+        normalized =
+            normalized.Trim();
+
+
+        // -----------------------------------------------------
+        // Tenta primeiro o nome exato.
+        //
+        // a_sharp -> ASharp
+        // a_flat  -> AFlat
+        // etc.
+        // -----------------------------------------------------
+
+        var enumName =
+            normalized
+                .Replace("_", "");
+
+
+        if (Enum.TryParse<PadNote>(
+                enumName,
+                true,
+                out note))
         {
-            normalized =
-                normalized[..^6];
+            return true;
         }
 
 
-        // Converte:
+        // -----------------------------------------------------
+        // Tenta também apenas a primeira parte da nota.
         //
-        // a_sharp
-        //      ↓
-        // ASharp
+        // Isso permite reconhecer nomes como:
+        //
+        // a_sharp_extra
+        // a_minor
+        // a_sharp_minor
+        // -----------------------------------------------------
 
-        normalized =
-            normalized.Replace(
-                "_sharp",
-                "Sharp",
-                StringComparison.OrdinalIgnoreCase);
+        var parts =
+            normalized.Split(
+                '_',
+                StringSplitOptions.RemoveEmptyEntries);
 
 
-        // Também aceita:
+        if (parts.Length > 0)
+        {
+            var noteName =
+                parts[0];
+
+
+            if (parts.Length >= 2 &&
+                parts[1].Equals(
+                    "sharp",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                noteName += "Sharp";
+            }
+
+
+            if (Enum.TryParse<PadNote>(
+                    noteName,
+                    true,
+                    out note))
+            {
+                return true;
+            }
+        }
+
+
+        // -----------------------------------------------------
+        // Última tentativa:
         //
         // a-sharp
+        // a sharp
+        // etc.
+        // -----------------------------------------------------
 
-        normalized =
-            normalized.Replace(
-                "-sharp",
-                "Sharp",
+        var cleaned =
+            normalized
+                .Replace("-", "")
+                .Replace(" ", "")
+                .Replace("_", "");
+
+
+        if (Enum.TryParse<PadNote>(
+                cleaned,
+                true,
+                out note))
+        {
+            return true;
+        }
+
+
+        return false;
+    }
+
+
+    // =========================================================
+    // VERIFICAR EXTENSÃO
+    // =========================================================
+
+    private static bool IsAudioFile(
+        string file)
+    {
+        var extension =
+            Path.GetExtension(file);
+
+
+        return
+            extension.Equals(
+                ".mp3",
+                StringComparison.OrdinalIgnoreCase)
+
+            ||
+
+            extension.Equals(
+                ".m4a",
+                StringComparison.OrdinalIgnoreCase)
+
+            ||
+
+            extension.Equals(
+                ".wav",
                 StringComparison.OrdinalIgnoreCase);
+    }
 
 
-        return Enum.TryParse(
-            normalized,
-            true,
-            out note);
+    // =========================================================
+    // NOME DO ÁUDIO
+    // =========================================================
+
+    private static string FormatAudioName(
+        string fileName)
+    {
+        var name =
+            fileName
+                .Replace("_", " ")
+                .Replace("-", " ")
+                .Trim();
+
+
+        if (string.IsNullOrWhiteSpace(name))
+            return "Áudio";
+
+
+        // -----------------------------------------------------
+        // Primeira letra maiúscula
+        // -----------------------------------------------------
+
+        if (name.Length > 1)
+        {
+            name =
+                char.ToUpper(name[0]) +
+                name.Substring(1);
+        }
+        else
+        {
+            name =
+                name.ToUpper();
+        }
+
+
+        // -----------------------------------------------------
+        // Limite de 50 caracteres
+        // -----------------------------------------------------
+
+        const int maxLength = 50;
+
+
+        if (name.Length > maxLength)
+        {
+            name =
+                name.Substring(
+                    0,
+                    maxLength - 3)
+                + "...";
+        }
+
+
+        return name;
     }
 }

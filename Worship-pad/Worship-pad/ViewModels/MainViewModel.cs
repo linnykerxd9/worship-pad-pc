@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
+using System.Text;
 using WorshipPad.Core.Interfaces;
 using WorshipPad.Core.Models;
 using WorshipPad.Core.Services;
@@ -15,13 +17,28 @@ public partial class MainViewModel : ObservableObject
     private readonly IAudioPlayerService _audioPlayer;
     private readonly SettingsService _settings;
     private readonly AudioDeviceService _deviceService;
+    private readonly ILogService _logService;
 
+
+    // =========================================================
+    // COLEÇÕES
+    // =========================================================
 
     public ObservableCollection<PadButton> Pads { get; }
+
+    public ObservableCollection<PadButton> FilteredPads { get; }
 
     public ObservableCollection<PadBank> Banks { get; }
 
     public ObservableCollection<string> AudioDevices { get; }
+
+
+    // =========================================================
+    // ESTADO
+    // =========================================================
+
+    [ObservableProperty]
+    private bool isNoteBank;
 
 
     [ObservableProperty]
@@ -33,8 +50,19 @@ public partial class MainViewModel : ObservableObject
 
 
     [ObservableProperty]
+    private string searchText = "";
+
+
+    [ObservableProperty]
     private string currentBank = "Nenhum banco";
 
+
+    private PadButton? _currentPad;
+
+
+    // =========================================================
+    // COMANDOS
+    // =========================================================
 
     public IRelayCommand<PadBank> SelectBankCommand { get; }
 
@@ -45,7 +73,11 @@ public partial class MainViewModel : ObservableObject
     public IRelayCommand<string> SelectAudioDeviceCommand { get; }
 
     public IRelayCommand RefreshBanksCommand { get; }
-    private readonly ILogService _logService;
+
+
+    // =========================================================
+    // CONSTRUTOR
+    // =========================================================
 
     public MainViewModel(
         IBankService bankService,
@@ -70,8 +102,14 @@ public partial class MainViewModel : ObservableObject
         Pads =
             new ObservableCollection<PadButton>();
 
+
+        FilteredPads =
+            new ObservableCollection<PadButton>();
+
+
         Banks =
             new ObservableCollection<PadBank>();
+
 
         AudioDevices =
             new ObservableCollection<string>(
@@ -83,19 +121,28 @@ public partial class MainViewModel : ObservableObject
         // =====================================================
 
         SelectBankCommand =
-            new RelayCommand<PadBank>(SelectBank);
+            new RelayCommand<PadBank>(
+                SelectBank);
+
 
         PlayPadCommand =
-            new RelayCommand<PadButton>(PlayPad);
+            new RelayCommand<PadButton>(
+                PlayPad);
+
 
         StopCommand =
-            new RelayCommand(StopPad);
+            new RelayCommand(
+                StopPad);
+
 
         SelectAudioDeviceCommand =
-            new RelayCommand<string>(SelectAudioDevice);
+            new RelayCommand<string>(
+                SelectAudioDevice);
+
 
         RefreshBanksCommand =
-            new RelayCommand(RefreshBanks);
+            new RelayCommand(
+                RefreshBanks);
 
 
         // =====================================================
@@ -118,9 +165,17 @@ public partial class MainViewModel : ObservableObject
                 "Atualização dos bancos iniciada.");
 
 
+            // =================================================
+            // GUARDAR BANCO ATUAL
+            // =================================================
+
             var selectedFolderPath =
                 SelectedBank?.FolderPath;
 
+
+            // =================================================
+            // LER BANCOS DO DISCO
+            // =================================================
 
             var newBanks =
                 _bankService.GetBanks();
@@ -138,6 +193,10 @@ public partial class MainViewModel : ObservableObject
             }
 
 
+            // =================================================
+            // ATUALIZAR COLEÇÃO DE BANCOS
+            // =================================================
+
             Banks.Clear();
 
 
@@ -147,6 +206,10 @@ public partial class MainViewModel : ObservableObject
             }
 
 
+            // =================================================
+            // NENHUM BANCO
+            // =================================================
+
             if (Banks.Count == 0)
             {
                 SelectedBank = null;
@@ -154,14 +217,19 @@ public partial class MainViewModel : ObservableObject
                 CurrentBank =
                     "Nenhum banco";
 
+                IsNoteBank = false;
+
                 Pads.Clear();
 
-                _logService.Info(
-                    "Nenhum banco disponível.");
+                FilteredPads.Clear();
 
                 return;
             }
 
+
+            // =================================================
+            // ENCONTRAR BANCO ANTERIOR
+            // =================================================
 
             PadBank? bankToSelect = null;
 
@@ -179,10 +247,19 @@ public partial class MainViewModel : ObservableObject
             }
 
 
-            bankToSelect ??= Banks[0];
+            // Se o banco anterior não existir,
+            // seleciona o primeiro.
+
+            bankToSelect ??=
+                Banks[0];
 
 
-            SelectBank(bankToSelect);
+            // =================================================
+            // SELECIONAR BANCO
+            // =================================================
+
+            SelectBank(
+                bankToSelect);
 
 
             _logService.Info(
@@ -200,21 +277,31 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+
     // =========================================================
     // SELECIONAR BANCO
     // =========================================================
 
-    private void SelectBank(PadBank? bank)
+    private void SelectBank(
+        PadBank? bank)
     {
         if (bank == null)
             return;
 
+
+        // =====================================================
+        // DESMARCAR BANCOS ANTERIORES
+        // =====================================================
 
         foreach (var item in Banks)
         {
             item.IsSelected = false;
         }
 
+
+        // =====================================================
+        // SELECIONAR BANCO
+        // =====================================================
 
         bank.IsSelected = true;
 
@@ -223,8 +310,25 @@ public partial class MainViewModel : ObservableObject
         CurrentBank = bank.Name;
 
 
+        // =====================================================
+        // LIMPAR PESQUISA
+        // =====================================================
+
+        SearchText = "";
+
+
+        // =====================================================
+        // LIMPAR ÁUDIOS ANTERIORES
+        // =====================================================
+
         Pads.Clear();
 
+        FilteredPads.Clear();
+
+
+        // =====================================================
+        // CARREGAR NOVOS ÁUDIOS
+        // =====================================================
 
         var pads =
             _padLoaderService.LoadPads(
@@ -235,24 +339,156 @@ public partial class MainViewModel : ObservableObject
         {
             Pads.Add(pad);
         }
+
+
+        // =====================================================
+        // IDENTIFICAR TIPO DO BANCO
+        // =====================================================
+
+        IsNoteBank =
+            pads.Any(
+                pad => pad.Note.HasValue);
+
+
+        // =====================================================
+        // ATUALIZAR LISTA FILTRADA
+        // =====================================================
+
+        UpdateFilteredPads();
     }
 
 
     // =========================================================
-    // PLAY PAD
+    // FILTRO / PESQUISA
+    // =========================================================
+    // =========================================================
+    // NORMALIZAR TEXTO PARA PESQUISA
     // =========================================================
 
-    private void PlayPad(PadButton? pad)
+    private static string NormalizeSearchText(
+        string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return string.Empty;
+
+
+        var normalized =
+            text.Normalize(
+                NormalizationForm.FormD);
+
+
+        var builder =
+            new StringBuilder();
+
+
+        foreach (var character in normalized)
+        {
+            var category =
+                CharUnicodeInfo.GetUnicodeCategory(
+                    character);
+
+
+            // Ignora acentos
+            if (category ==
+                UnicodeCategory.NonSpacingMark)
+            {
+                continue;
+            }
+
+
+            builder.Append(character);
+        }
+
+
+        return
+            builder
+                .ToString()
+                .Normalize(
+                    NormalizationForm.FormC)
+                .ToLowerInvariant()
+                .Trim();
+    }
+
+
+    // =========================================================
+    // FILTRAR ÁUDIOS
+    // =========================================================
+
+    private void UpdateFilteredPads()
+    {
+        FilteredPads.Clear();
+
+
+        var search =
+            NormalizeSearchText(
+                SearchText);
+
+
+        // -----------------------------------------------------
+        // Sem pesquisa: mostra tudo
+        // -----------------------------------------------------
+
+        if (string.IsNullOrWhiteSpace(search))
+        {
+            foreach (var pad in Pads)
+            {
+                FilteredPads.Add(pad);
+            }
+
+            return;
+        }
+
+
+        // -----------------------------------------------------
+        // Pesquisa ignorando:
+        //
+        // - maiúsculas/minúsculas
+        // - acentos
+        // -----------------------------------------------------
+
+        foreach (var pad in Pads)
+        {
+            var displayName =
+                NormalizeSearchText(
+                    pad.DisplayName);
+
+
+            if (displayName.Contains(search))
+            {
+                FilteredPads.Add(pad);
+            }
+        }
+    }
+    // =========================================================
+    // QUANDO O TEXTO DA PESQUISA MUDA
+    // =========================================================
+
+    partial void OnSearchTextChanged(
+        string value)
+    {
+        UpdateFilteredPads();
+    }
+
+
+    // =========================================================
+    // PLAY PAD / ÁUDIO
+    // =========================================================
+
+    private void PlayPad(
+        PadButton? pad)
     {
         if (pad == null)
             return;
 
 
+        // =====================================================
+        // LIMPAR ÁUDIO ANTERIOR
+        // =====================================================
+
         ClearPlayingPads();
 
 
         pad.IsPlaying = true;
-
 
         _currentPad = pad;
 
@@ -265,10 +501,14 @@ public partial class MainViewModel : ObservableObject
         catch (Exception ex)
         {
             pad.IsPlaying = false;
+
             _currentPad = null;
 
-            System.Diagnostics.Debug.WriteLine(
-                $"Erro ao reproduzir pad: {ex}");
+
+            _logService.Error(
+                $"Erro ao reproduzir áudio: " +
+                $"{Path.GetFileName(pad.AudioPath)}",
+                ex);
         }
     }
 
@@ -285,8 +525,9 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine(
-                $"Erro ao parar áudio: {ex}");
+            _logService.Error(
+                "Erro ao parar áudio.",
+                ex);
         }
 
 
@@ -297,7 +538,7 @@ public partial class MainViewModel : ObservableObject
 
 
     // =========================================================
-    // LIMPAR PAD ATUAL
+    // LIMPAR INDICADOR DE REPRODUÇÃO
     // =========================================================
 
     private void ClearPlayingPads()
@@ -327,11 +568,16 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine(
-                $"Erro ao selecionar dispositivo: {ex}");
+            _logService.Error(
+                $"Erro ao selecionar dispositivo: {device}",
+                ex);
         }
     }
 
+
+    // =========================================================
+    // DISPOSITIVO DE ÁUDIO ALTERADO
+    // =========================================================
 
     partial void OnSelectedAudioDeviceChanged(
         string? value)
@@ -345,20 +591,15 @@ public partial class MainViewModel : ObservableObject
             _audioPlayer.SetOutputDevice(
                 value);
 
+
             _settings.SaveOutputDevice(
                 value);
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine(
-                $"Erro ao alterar dispositivo: {ex}");
+            _logService.Error(
+                $"Erro ao alterar dispositivo de áudio: {value}",
+                ex);
         }
     }
-
-
-    // =========================================================
-    // PAD ATUAL
-    // =========================================================
-
-    private PadButton? _currentPad;
 }

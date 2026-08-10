@@ -2,11 +2,13 @@
     x:Class="WorshipPad.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     Title="WorshipPad"
-    MinWidth="700"
+    MinWidth="800"
     MinHeight="500"
-    Background="#0D0F12"
-    WindowStartupLocation="CenterScreen">
+    Background="#20242B">
 
     <Window.Resources>
 
@@ -232,7 +234,7 @@
 
 
         <!-- ================================================= -->
-        <!-- PAD -->
+        <!-- PAD DE NOTA -->
         <!-- ================================================= -->
 
         <Style
@@ -302,7 +304,7 @@
 
             <Style.Triggers>
 
-                <!-- PAD TOCANDO -->
+                <!-- TOCANDO -->
 
                 <DataTrigger
                     Binding="{Binding IsPlaying}"
@@ -340,6 +342,124 @@
                     <Setter
                         Property="Foreground"
                         Value="White"/>
+
+                </Trigger>
+
+
+                <!-- PRESSIONADO -->
+
+                <Trigger
+                    Property="IsPressed"
+                    Value="True">
+
+                    <Setter
+                        Property="Opacity"
+                        Value="0.7"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+
+        <!-- ================================================= -->
+        <!-- ÁUDIO / MÚSICA -->
+        <!-- ================================================= -->
+
+        <Style
+            x:Key="AudioButtonStyle"
+            TargetType="Button">
+
+            <Setter
+                Property="Template"
+                Value="{StaticResource RoundedButtonTemplate}"/>
+
+            <Setter
+                Property="Background"
+                Value="{StaticResource PadNormalBackground}"/>
+
+            <Setter
+                Property="Foreground"
+                Value="#F5F7FA"/>
+
+            <Setter
+                Property="FontSize"
+                Value="16"/>
+
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"/>
+
+            <Setter
+                Property="Margin"
+                Value="6"/>
+
+            <Setter
+                Property="Padding"
+                Value="12,10"/>
+
+            <Setter
+                Property="MinHeight"
+                Value="50"/>
+
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Stretch"/>
+
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Left"/>
+
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center"/>
+
+            <Setter
+                Property="BorderThickness"
+                Value="1"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="#505763"/>
+
+
+            <Style.Triggers>
+
+                <!-- TOCANDO -->
+
+                <DataTrigger
+                    Binding="{Binding IsPlaying}"
+                    Value="True">
+
+                    <Setter
+                        Property="Background"
+                        Value="{StaticResource PadPlayingBackground}"/>
+
+                    <Setter
+                        Property="BorderBrush"
+                        Value="#00FFD0"/>
+
+                    <Setter
+                        Property="Foreground"
+                        Value="White"/>
+
+                </DataTrigger>
+
+
+                <!-- HOVER -->
+
+                <Trigger
+                    Property="IsMouseOver"
+                    Value="True">
+
+                    <Setter
+                        Property="Background"
+                        Value="{StaticResource PadHoverBackground}"/>
+
+                    <Setter
+                        Property="BorderBrush"
+                        Value="#737C8B"/>
 
                 </Trigger>
 
@@ -462,10 +582,6 @@
                     <Setter
                         Property="BorderBrush"
                         Value="#737C8B"/>
-
-                    <Setter
-                        Property="Foreground"
-                        Value="White"/>
 
                 </Trigger>
 
@@ -627,7 +743,7 @@
 
             <Style.Triggers>
 
-                <!-- STOP HOVER -->
+                <!-- HOVER -->
 
                 <Trigger
                     Property="IsMouseOver"
@@ -648,7 +764,7 @@
                 </Trigger>
 
 
-                <!-- STOP PRESSIONADO -->
+                <!-- PRESSIONADO -->
 
                 <Trigger
                     Property="IsPressed"
@@ -677,18 +793,27 @@
         <Grid.RowDefinitions>
 
             <!-- Bancos + botões -->
+
             <RowDefinition
                 Height="Auto"/>
 
             <!-- Banco atual -->
+
             <RowDefinition
                 Height="Auto"/>
 
-            <!-- Pads -->
+            <!-- Pesquisa -->
+
+            <RowDefinition
+                Height="Auto"/>
+
+            <!-- Áudios -->
+
             <RowDefinition
                 Height="*"/>
 
             <!-- Stop -->
+
             <RowDefinition
                 Height="Auto"/>
 
@@ -767,30 +892,35 @@
             <!-- ================================================= -->
 
             <StackPanel
-    Grid.Column="1"
-    HorizontalAlignment="Right"
-    VerticalAlignment="Top">
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
 
                 <Button
-        Content="⚙ Configurações"
-        Width="150"
-        Height="40"
-        Margin="10,0,0,5"
-        Click="OpenSettings_Click"/>
+                    Content="⚙ Configurações"
+                    Width="150"
+                    Height="40"
+                    Margin="10,0,0,5"
+                    Style="{StaticResource SystemButtonStyle}"
+                    Click="OpenSettings_Click"/>
+
 
                 <Button
-        Content="📋 Logs do sistema"
-        Width="150"
-        Height="40"
-        Margin="10,5,0,5"
-        Click="OpenLogs_Click"/>
+                    Content="📋 Logs do sistema"
+                    Width="150"
+                    Height="40"
+                    Margin="10,5,0,5"
+                    Style="{StaticResource SystemButtonStyle}"
+                    Click="OpenLogs_Click"/>
+
 
                 <Button
-        Content="🔄 Atualizar"
-        Width="150"
-        Height="40"
-        Margin="10,5,0,0"
-        Command="{Binding RefreshBanksCommand}"/>
+                    Content="🔄 Atualizar"
+                    Width="150"
+                    Height="40"
+                    Margin="10,5,0,0"
+                    Style="{StaticResource SystemButtonStyle}"
+                    Command="{Binding RefreshBanksCommand}"/>
 
             </StackPanel>
 
@@ -808,51 +938,188 @@
             FontSize="23"
             FontWeight="SemiBold"
             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             TextAlignment="Center"
             TextWrapping="Wrap"
-            Margin="10,15,10,15"/>
+            Margin="10,15,10,10"/>
 
 
         <!-- ================================================= -->
-        <!-- PADS -->
+        <!-- PESQUISA -->
+        <!-- ================================================= -->
+
+        <Grid
+            Grid.Row="2"
+            Margin="0,0,0,15">
+
+            <TextBox
+                Width="350"
+                Height="40"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                Padding="12,5"
+                Foreground="#F1F3F5"
+                Background="#2D323B"
+                BorderBrush="#505763"
+                BorderThickness="1"
+                VerticalContentAlignment="Center"
+                Text="{Binding SearchText,
+                    UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="Pesquisar áudio..."/>
+
+            <TextBlock
+                Text="🔎"
+                FontSize="19"
+                Foreground="#AEB5C0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="320,0,0,0"
+                IsHitTestVisible="False"/>
+
+        </Grid>
+
+
+        <!-- ================================================= -->
+        <!-- ÁREA DOS ÁUDIOS -->
         <!-- ================================================= -->
 
         <ScrollViewer
-            Grid.Row="2"
+            Grid.Row="3"
             HorizontalScrollBarVisibility="Disabled"
             VerticalScrollBarVisibility="Auto">
 
-            <ItemsControl
-                ItemsSource="{Binding Pads}">
+            <Grid>
 
-                <ItemsControl.ItemsPanel>
+                <!-- ================================================= -->
+                <!-- BANCO DE NOTAS -->
+                <!-- ================================================= -->
 
-                    <ItemsPanelTemplate>
+                <ItemsControl
+                    ItemsSource="{Binding FilteredPads}">
 
-                        <UniformGrid
-                            Columns="4"/>
+                    <ItemsControl.Style>
 
-                    </ItemsPanelTemplate>
+                        <Style
+                            TargetType="ItemsControl">
 
-                </ItemsControl.ItemsPanel>
+                            <Setter
+                                Property="Visibility"
+                                Value="Collapsed"/>
+
+                            <Style.Triggers>
+
+                                <DataTrigger
+                                    Binding="{Binding IsNoteBank}"
+                                    Value="True">
+
+                                    <Setter
+                                        Property="Visibility"
+                                        Value="Visible"/>
+
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+
+                    </ItemsControl.Style>
 
 
-                <ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
 
-                    <DataTemplate>
+                        <ItemsPanelTemplate>
 
-                        <Button
-                            Content="{Binding DisplayName}"
-                            Style="{StaticResource PadButtonStyle}"
-                            Command="{Binding DataContext.PlayPadCommand,
-                                RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                            CommandParameter="{Binding}"/>
+                            <UniformGrid
+                                Columns="4"/>
 
-                    </DataTemplate>
+                        </ItemsPanelTemplate>
 
-                </ItemsControl.ItemTemplate>
+                    </ItemsControl.ItemsPanel>
 
-            </ItemsControl>
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Button
+                                Content="{Binding DisplayName}"
+                                Style="{StaticResource PadButtonStyle}"
+                                Command="{Binding DataContext.PlayPadCommand,
+                                    RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding}"/>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+
+                <!-- ================================================= -->
+                <!-- BANCO DE ÁUDIOS / MÚSICAS -->
+                <!-- ================================================= -->
+
+                <ItemsControl
+                    ItemsSource="{Binding FilteredPads}">
+
+                    <ItemsControl.Style>
+
+                        <Style
+                            TargetType="ItemsControl">
+
+                            <Setter
+                                Property="Visibility"
+                                Value="Visible"/>
+
+                            <Style.Triggers>
+
+                                <DataTrigger
+                                    Binding="{Binding IsNoteBank}"
+                                    Value="True">
+
+                                    <Setter
+                                        Property="Visibility"
+                                        Value="Collapsed"/>
+
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+
+                    </ItemsControl.Style>
+
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+
+                            <StackPanel
+                                Orientation="Vertical"/>
+
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Button
+                                Content="{Binding DisplayName}"
+                                Style="{StaticResource AudioButtonStyle}"
+                                Command="{Binding DataContext.PlayPadCommand,
+                                    RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding}"/>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </Grid>
 
         </ScrollViewer>
 
@@ -862,7 +1129,7 @@
         <!-- ================================================= -->
 
         <StackPanel
-            Grid.Row="3"
+            Grid.Row="4"
             Orientation="Horizontal"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
