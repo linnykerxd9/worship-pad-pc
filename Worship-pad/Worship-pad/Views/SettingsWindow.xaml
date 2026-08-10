@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Configurações"
     Width="520"
-    Height="650"
+    Height="700"
+    Icon="../Assets/worshippad.ico"
     MinWidth="400"
-    MinHeight="450"
+    MinHeight="500"
     Background="#0D1014"
     Foreground="White"
     WindowStartupLocation="CenterOwner"
@@ -239,8 +240,6 @@
                                 </Grid.ColumnDefinitions>
 
 
-                                <!-- TEXTO SELECIONADO -->
-
                                 <ContentPresenter
                                     Grid.Column="0"
                                     VerticalAlignment="Center"
@@ -250,8 +249,6 @@
                                     TextElement.Foreground="White"
                                     TextElement.FontWeight="SemiBold"/>
 
-
-                                <!-- SETA -->
 
                                 <Path
                                     x:Name="Arrow"
@@ -270,8 +267,6 @@
 
                         <ControlTemplate.Triggers>
 
-                            <!-- HOVER -->
-
                             <Trigger
                                 Property="IsMouseOver"
                                 Value="True">
@@ -289,8 +284,6 @@
                             </Trigger>
 
 
-                            <!-- ABERTO -->
-
                             <Trigger
                                 Property="IsChecked"
                                 Value="True">
@@ -302,8 +295,6 @@
 
                             </Trigger>
 
-
-                            <!-- DESABILITADO -->
 
                             <Trigger
                                 Property="IsEnabled"
@@ -385,10 +376,6 @@
 
                         <Grid>
 
-                            <!-- ================================================= -->
-                            <!-- BOTÃO DO COMBO -->
-                            <!-- ================================================= -->
-
                             <ToggleButton
                                 x:Name="ToggleButton"
                                 Style="{StaticResource ComboToggleButtonStyle}"
@@ -410,10 +397,6 @@
 
                             </ToggleButton>
 
-
-                            <!-- ================================================= -->
-                            <!-- DROPDOWN -->
-                            <!-- ================================================= -->
 
                             <Popup
                                 x:Name="PART_Popup"
@@ -451,8 +434,6 @@
 
                         <ControlTemplate.Triggers>
 
-                            <!-- SEM ITENS -->
-
                             <Trigger
                                 Property="HasItems"
                                 Value="False">
@@ -464,8 +445,6 @@
 
                             </Trigger>
 
-
-                            <!-- DESABILITADO -->
 
                             <Trigger
                                 Property="IsEnabled"
@@ -541,10 +520,6 @@
 
                         <ControlTemplate.Triggers>
 
-                            <!-- ================================================= -->
-                            <!-- HOVER -->
-                            <!-- ================================================= -->
-
                             <Trigger
                                 Property="IsMouseOver"
                                 Value="True">
@@ -560,10 +535,6 @@
 
                             </Trigger>
 
-
-                            <!-- ================================================= -->
-                            <!-- SELECIONADO -->
-                            <!-- ================================================= -->
 
                             <Trigger
                                 Property="IsSelected"
@@ -584,10 +555,6 @@
 
                             </Trigger>
 
-
-                            <!-- ================================================= -->
-                            <!-- DESABILITADO -->
-                            <!-- ================================================= -->
 
                             <Trigger
                                 Property="IsEnabled"
@@ -648,23 +615,18 @@
 
                 <Grid.RowDefinitions>
 
-                    <!-- Título -->
                     <RowDefinition
                         Height="Auto"/>
 
-                    <!-- Tipo -->
                     <RowDefinition
                         Height="Auto"/>
 
-                    <!-- Windows -->
                     <RowDefinition
                         Height="Auto"/>
 
-                    <!-- ASIO -->
                     <RowDefinition
                         Height="Auto"/>
 
-                    <!-- Volume -->
                     <RowDefinition
                         Height="Auto"/>
 
@@ -717,7 +679,8 @@
                             HorizontalAlignment="Stretch"
                             MinWidth="250"
                             ItemsSource="{Binding OutputTypes}"
-                            SelectedItem="{Binding SelectedOutputType, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedOutputType,
+                                Mode=TwoWay}"
                             Style="{StaticResource SettingsComboBoxStyle}"
                             Margin="0,10,0,0"/>
 
@@ -759,7 +722,8 @@
                             HorizontalAlignment="Stretch"
                             MinWidth="250"
                             ItemsSource="{Binding AudioDevices}"
-                            SelectedItem="{Binding SelectedAudioDevice, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedAudioDevice,
+                                Mode=TwoWay}"
                             Style="{StaticResource SettingsComboBoxStyle}"
                             Margin="0,10,0,0"/>
 
@@ -793,8 +757,16 @@
                             <RowDefinition
                                 Height="Auto"/>
 
+                            <RowDefinition
+                                Height="Auto"/>
+
+                            <RowDefinition
+                                Height="Auto"/>
+
                         </Grid.RowDefinitions>
 
+
+                        <!-- DRIVER -->
 
                         <TextBlock
                             Grid.Row="0"
@@ -807,14 +779,17 @@
                             HorizontalAlignment="Stretch"
                             MinWidth="250"
                             ItemsSource="{Binding AsioDrivers}"
-                            SelectedItem="{Binding SelectedAsioDriver, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedAsioDriver,
+                                Mode=TwoWay}"
                             Style="{StaticResource SettingsComboBoxStyle}"
                             Margin="0,10,0,22"/>
 
 
+                        <!-- TAXA DE AMOSTRAGEM -->
+
                         <TextBlock
                             Grid.Row="2"
-                            Text="Canal de saída"
+                            Text="Taxa de amostragem"
                             Style="{StaticResource SettingsLabelStyle}"/>
 
 
@@ -822,8 +797,42 @@
                             Grid.Row="3"
                             HorizontalAlignment="Stretch"
                             MinWidth="250"
+                            ItemsSource="{Binding AsioSampleRates}"
+                            SelectedItem="{Binding SelectedAsioSampleRate,
+                                Mode=TwoWay}"
+                            Style="{StaticResource SettingsComboBoxStyle}"
+                            Margin="0,10,0,22">
+
+                            <ComboBox.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <TextBlock
+                                        Text="{Binding StringFormat={}{0} Hz}"
+                                        Foreground="White"/>
+
+                                </DataTemplate>
+
+                            </ComboBox.ItemTemplate>
+
+                        </ComboBox>
+
+
+                        <!-- CANAL -->
+
+                        <TextBlock
+                            Grid.Row="4"
+                            Text="Canal de saída"
+                            Style="{StaticResource SettingsLabelStyle}"/>
+
+
+                        <ComboBox
+                            Grid.Row="5"
+                            HorizontalAlignment="Stretch"
+                            MinWidth="250"
                             ItemsSource="{Binding AsioOutputChannels}"
-                            SelectedItem="{Binding SelectedAsioOutputChannel, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedAsioOutputChannel,
+                                Mode=TwoWay}"
                             Style="{StaticResource SettingsComboBoxStyle}"
                             Margin="0,10,0,0"/>
 
@@ -864,7 +873,8 @@
                             HorizontalAlignment="Stretch"
                             Minimum="0"
                             Maximum="1"
-                            Value="{Binding Volume, Mode=TwoWay}"
+                            Value="{Binding Volume,
+                                Mode=TwoWay}"
                             Margin="0,12,0,0"
                             IsMoveToPointEnabled="True"
                             SmallChange="0.01"

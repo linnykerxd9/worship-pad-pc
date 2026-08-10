@@ -7,10 +7,14 @@ namespace WorshipPad.Core.Services;
 public class BankService : IBankService
 {
     private readonly string _padsFolder;
+    private readonly PadLoaderService _padLoaderService;
 
 
-    public BankService()
+    public BankService(
+        PadLoaderService padLoaderService)
     {
+        _padLoaderService = padLoaderService;
+
         _padsFolder =
             Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
@@ -24,30 +28,63 @@ public class BankService : IBankService
             return Array.Empty<PadBank>();
 
 
-        return Directory
-            .EnumerateDirectories(_padsFolder)
-            .Select(folder => new PadBank
+        var banks =
+            new List<PadBank>();
+
+
+        foreach (var folder in
+                 Directory.EnumerateDirectories(
+                     _padsFolder))
+        {
+            try
             {
-                Name = Path.GetFileName(folder),
+                // =================================================
+                // CARREGA OS PADS NOVAMENTE DO DISCO
+                // =================================================
 
-                FolderPath = folder,
+                var pads =
+                    _padLoaderService.LoadPads(
+                        folder);
 
-                PadCount =
-                    Directory
-                        .EnumerateFiles(folder)
-                        .Count(file =>
-                            file.EndsWith(
-                                ".wav",
-                                StringComparison.OrdinalIgnoreCase)
-                            ||
-                            file.EndsWith(
-                                ".mp3",
-                                StringComparison.OrdinalIgnoreCase)
-                            ||
-                            file.EndsWith(
-                                ".m4a",
-                                StringComparison.OrdinalIgnoreCase))
-            })
+
+                banks.Add(
+                    new PadBank
+                    {
+                        Name =
+                            Path.GetFileName(folder),
+
+                        FolderPath =
+                            folder,
+
+                        PadCount =
+                            pads.Count
+                    });
+            }
+            catch
+            {
+                // Se houver algum problema ao ler uma pasta,
+                // ainda mantemos o banco na lista.
+
+                banks.Add(
+                    new PadBank
+                    {
+                        Name =
+                            Path.GetFileName(folder),
+
+                        FolderPath =
+                            folder,
+
+                        PadCount = 0
+                    });
+            }
+        }
+
+
+        // =====================================================
+        // ORDEM DOS BANCOS
+        // =====================================================
+
+        return banks
             .OrderBy(bank =>
                 bank.Name.Equals(
                     "Worship App Maior",
@@ -60,32 +97,10 @@ public class BankService : IBankService
                     ? 1
                     :
                     2)
-            .ThenBy(bank => bank.Name)
+
+            .ThenBy(
+                bank => bank.Name)
+
             .ToList();
-    }
-
-
-    private static bool IsAudioFile(
-        string file)
-    {
-        var extension =
-            Path.GetExtension(file);
-
-
-        return
-            string.Equals(
-                extension,
-                ".mp3",
-                StringComparison.OrdinalIgnoreCase)
-            ||
-            string.Equals(
-                extension,
-                ".m4a",
-                StringComparison.OrdinalIgnoreCase)
-            ||
-            string.Equals(
-                extension,
-                ".wav",
-                StringComparison.OrdinalIgnoreCase);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.Logging;
-using NAudio.CoreAudioApi;
+﻿using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System.IO;
 using WorshipPad.Core.Enums;
@@ -11,15 +10,32 @@ namespace WorshipPad.Core.Services;
 public class AudioPlayerService : IAudioPlayerService
 {
     private IAudioOutput? output;
+
     private AudioFileReader? reader;
 
+
     private readonly AudioSettings _settings;
+
     private readonly SettingsService _settingsService;
+
     private readonly IAudioOutputFactory _outputFactory;
+
     private readonly ILogService _log;
+
+
     private MMDevice? _selectedDevice;
-    
-    public string? SelectedDeviceName { get; private set; }
+
+
+    public string? SelectedDeviceName
+    {
+        get;
+        private set;
+    }
+
+
+    // =========================================================
+    // VOLUME
+    // =========================================================
 
     public float Volume
     {
@@ -31,17 +47,26 @@ public class AudioPlayerService : IAudioPlayerService
 
         set
         {
-            _settings.Volume = value;
+            _settings.Volume =
+                value;
+
 
             if (reader != null)
             {
-                reader.Volume = value;
+                reader.Volume =
+                    value;
             }
+
 
             _log.Info(
                 $"Volume alterado para: {value:0.00}");
         }
     }
+
+
+    // =========================================================
+    // CONSTRUTOR
+    // =========================================================
 
     public AudioPlayerService(
         AudioSettings audioSettings,
@@ -49,14 +74,25 @@ public class AudioPlayerService : IAudioPlayerService
         IAudioOutputFactory outputFactory,
         ILogService log)
     {
-        _settings = audioSettings;
-        _settingsService = settingsService;
-        _outputFactory = outputFactory;
-        _log = log;
+        _settings =
+            audioSettings;
 
-        // =============================
+
+        _settingsService =
+            settingsService;
+
+
+        _outputFactory =
+            outputFactory;
+
+
+        _log =
+            log;
+
+
+        // =====================================================
         // CARREGAR CONFIGURAÇÕES SALVAS
-        // =============================
+        // =====================================================
 
         _settings.OutputType =
             _settingsService.LoadOutputType();
@@ -69,7 +105,18 @@ public class AudioPlayerService : IAudioPlayerService
         _settings.AsioOutputChannel =
             _settingsService.LoadAsioOutputChannel();
 
-        _settings.AsioSampleRate = _settingsService.LoadAsioSampleRate();
+
+        _settings.AsioSampleRate =
+            _settingsService.LoadAsioSampleRate();
+
+
+        // Se o arquivo antigo não possuir
+        // uma taxa válida, usamos 44100 Hz.
+        if (_settings.AsioSampleRate <= 0)
+        {
+            _settings.AsioSampleRate =
+                44100;
+        }
 
 
         _settings.Volume =
@@ -79,48 +126,64 @@ public class AudioPlayerService : IAudioPlayerService
         var device =
             _settingsService.LoadOutputDevice();
 
+
         if (!string.IsNullOrWhiteSpace(device))
         {
             SetOutputDevice(device);
         }
 
+
         _log.Info(
             $"Configuração de áudio carregada. " +
             $"Tipo: {_settings.OutputType}, " +
             $"Driver ASIO: {_settings.AsioDriver ?? "nenhum"}, " +
+            $"Taxa ASIO: {_settings.AsioSampleRate} Hz, " +
             $"Canal ASIO: {_settings.AsioOutputChannel}, " +
             $"Volume: {_settings.Volume:0.00}");
     }
 
 
-    public void PlayLoop(string filePath)
+    // =========================================================
+    // REPRODUZIR PAD
+    // =========================================================
+
+    public void PlayLoop(
+        string filePath)
     {
         Stop();
+
 
         try
         {
             _log.Info(
-                $"Iniciando pad: {Path.GetFileName(filePath)}");
+                $"Iniciando pad: " +
+                $"{Path.GetFileName(filePath)}");
+
 
             reader =
                 new AudioFileReader(filePath);
+
 
             _log.Info(
                 $"Formato do pad: " +
                 $"{reader.WaveFormat.SampleRate} Hz, " +
                 $"{reader.WaveFormat.Channels} canais");
 
+
             reader.Volume =
                 (float)_settings.Volume;
+
 
             output =
                 _outputFactory.Create(
                     _settings,
                     _selectedDevice);
 
+
             _log.Info(
                 $"Taxa de saída ASIO: " +
                 $"{_settings.AsioSampleRate} Hz");
+
 
             output.Init(reader);
 
@@ -167,12 +230,18 @@ public class AudioPlayerService : IAudioPlayerService
                 $"{Path.GetFileName(filePath)}",
                 ex);
 
+
             Stop();
+
 
             throw;
         }
     }
 
+
+    // =========================================================
+    // PARAR
+    // =========================================================
 
     public void Stop()
     {
@@ -182,10 +251,16 @@ public class AudioPlayerService : IAudioPlayerService
 
         reader?.Dispose();
 
+
         output = null;
+
         reader = null;
     }
 
+
+    // =========================================================
+    // FADE OUT
+    // =========================================================
 
     public async Task FadeOut(
         int duration = 1000)
@@ -206,11 +281,16 @@ public class AudioPlayerService : IAudioPlayerService
             reader.Volume =
                 startVolume * i / steps;
 
+
             await Task.Delay(
                 duration / steps);
         }
     }
 
+
+    // =========================================================
+    // FADE IN
+    // =========================================================
 
     public async Task FadeIn(
         int duration = 1000)
@@ -230,21 +310,29 @@ public class AudioPlayerService : IAudioPlayerService
             reader.Volume =
                 (float)i / steps;
 
+
             await Task.Delay(
                 duration / steps);
         }
     }
 
 
-    public void ChangeOutputDevice(string deviceName)
+    // =========================================================
+    // ALTERAR DISPOSITIVO
+    // =========================================================
+
+    public void ChangeOutputDevice(
+        string deviceName)
     {
         if (string.IsNullOrWhiteSpace(deviceName))
             return;
+
 
         try
         {
             using var enumerator =
                 new MMDeviceEnumerator();
+
 
             _selectedDevice =
                 enumerator
@@ -252,7 +340,10 @@ public class AudioPlayerService : IAudioPlayerService
                         DataFlow.Render,
                         DeviceState.Active)
                     .FirstOrDefault(
-                        d => d.FriendlyName == deviceName);
+                        d =>
+                            d.FriendlyName ==
+                            deviceName);
+
 
             if (_selectedDevice == null)
             {
@@ -260,18 +351,23 @@ public class AudioPlayerService : IAudioPlayerService
                     $"Dispositivo de áudio não encontrado: " +
                     $"{deviceName}");
 
+
                 return;
             }
+
 
             SelectedDeviceName =
                 deviceName;
 
+
             _settings.OutputDevice =
                 deviceName;
+
 
             _log.Info(
                 $"Dispositivo de saída alterado para: " +
                 $"{deviceName}");
+
 
             Stop();
         }
@@ -282,10 +378,15 @@ public class AudioPlayerService : IAudioPlayerService
                 $"'{deviceName}'.",
                 ex);
 
+
             throw;
         }
     }
 
+
+    // =========================================================
+    // DEFINIR DISPOSITIVO
+    // =========================================================
 
     public void SetOutputDevice(
         string deviceName)
@@ -304,7 +405,9 @@ public class AudioPlayerService : IAudioPlayerService
                     DataFlow.Render,
                     DeviceState.Active)
                 .FirstOrDefault(
-                    d => d.FriendlyName == deviceName);
+                    d =>
+                        d.FriendlyName ==
+                        deviceName);
 
 
         if (_selectedDevice == null)
@@ -320,29 +423,72 @@ public class AudioPlayerService : IAudioPlayerService
     }
 
 
-    public void ChangeOutputType(AudioOutputType type)
+    // =========================================================
+    // ALTERAR TIPO DE SAÍDA
+    // =========================================================
+
+    public void ChangeOutputType(
+        AudioOutputType type)
     {
         _log.Info(
             $"Tipo de saída alterado para: {type}");
 
-        _settings.OutputType = type;
+
+        _settings.OutputType =
+            type;
+
 
         Stop();
     }
 
 
-    public void ChangeOutputChannel(int channel)
+    // =========================================================
+    // ALTERAR CANAL ASIO
+    // =========================================================
+
+    public void ChangeOutputChannel(
+        int channel)
     {
         if (channel <= 0)
             return;
 
+
         _settings.AsioOutputChannel =
             channel;
+
 
         _log.Info(
             $"Canal de saída ASIO alterado para: " +
             $"{channel}");
 
+
+        Stop();
+    }
+
+
+    // =========================================================
+    // ALTERAR TAXA DE AMOSTRAGEM ASIO
+    // =========================================================
+
+    public void ChangeAsioSampleRate(
+        int sampleRate)
+    {
+        if (sampleRate <= 0)
+            return;
+
+
+        _settings.AsioSampleRate =
+            sampleRate;
+
+
+        _log.Info(
+            $"Taxa de amostragem ASIO alterada para: " +
+            $"{sampleRate} Hz");
+
+
+        // A saída ASIO atual precisa ser encerrada.
+        // O próximo PlayLoop() criará a saída novamente
+        // usando a nova taxa configurada.
         Stop();
     }
 }

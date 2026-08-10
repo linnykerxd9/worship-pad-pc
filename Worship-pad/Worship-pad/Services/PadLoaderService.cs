@@ -24,7 +24,10 @@ public class PadLoaderService
 
         var files =
             Directory
-                .EnumerateFiles(folderPath)
+                .EnumerateFiles(
+                    folderPath,
+                    "*.*",
+                    SearchOption.AllDirectories)
                 .Where(IsAudioFile)
                 .OrderBy(
                     file => Path.GetFileName(file),
@@ -42,8 +45,8 @@ public class PadLoaderService
             // =================================================
 
             if (TryGetPadNote(
-                    fileName,
-                    out var note))
+                fileName,
+                out var note))
             {
                 pads.Add(
                     new PadButton
@@ -115,7 +118,7 @@ public class PadLoaderService
         //
         // a_sharp
         // a_sharp
-        // a
+        // a_sharp
         // a
         // a
         // -----------------------------------------------------
@@ -126,7 +129,10 @@ public class PadLoaderService
                 .ToLowerInvariant();
 
 
+        // -----------------------------------------------------
         // Remove informações de modo.
+        // -----------------------------------------------------
+
         normalized =
             normalized
                 .Replace("_minor", "")
@@ -135,16 +141,12 @@ public class PadLoaderService
                 .Replace(" major", "");
 
 
-        // -----------------------------------------------------
-        // Remove possíveis espaços extras no final.
-        // -----------------------------------------------------
-
         normalized =
             normalized.Trim();
 
 
         // -----------------------------------------------------
-        // Tenta primeiro o nome exato.
+        // Tenta o nome exato.
         //
         // a_sharp -> ASharp
         // a_flat  -> AFlat
@@ -197,9 +199,9 @@ public class PadLoaderService
 
 
             if (Enum.TryParse<PadNote>(
-                    noteName,
-                    true,
-                    out note))
+                noteName,
+                true,
+                out note))
             {
                 return true;
             }
@@ -211,7 +213,7 @@ public class PadLoaderService
         //
         // a-sharp
         // a sharp
-        // etc.
+        // a_sharp
         // -----------------------------------------------------
 
         var cleaned =
@@ -222,9 +224,9 @@ public class PadLoaderService
 
 
         if (Enum.TryParse<PadNote>(
-                cleaned,
-                true,
-                out note))
+            cleaned,
+            true,
+            out note))
         {
             return true;
         }

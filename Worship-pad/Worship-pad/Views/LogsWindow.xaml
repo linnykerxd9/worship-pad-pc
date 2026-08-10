@@ -6,6 +6,7 @@
     Title="Logs do sistema"
     Width="950"
     Height="650"
+    Icon="../Assets/worshippad.ico"
     MinWidth="650"
     MinHeight="450"
     Background="#0D1014"
