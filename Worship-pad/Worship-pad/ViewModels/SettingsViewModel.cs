@@ -14,6 +14,7 @@ public partial class SettingsViewModel : ObservableObject
     private readonly IAsioDeviceService _asioDeviceService;
     private readonly AudioDeviceService _audioDeviceService;
     private readonly ILogService _log;
+    public ObservableCollection<int> AsioSampleRates { get; }
     public ObservableCollection<int> AsioOutputChannels { get; }
     public Visibility WindowsVisibility =>
     SelectedOutputType == AudioOutputType.Windows
@@ -38,7 +39,8 @@ public partial class SettingsViewModel : ObservableObject
 
     [ObservableProperty]
     private string? selectedAudioDevice;
-
+    [ObservableProperty]
+    private int selectedAsioSampleRate;
 
     [ObservableProperty]
     private string? selectedAsioDriver;
@@ -71,6 +73,13 @@ public partial class SettingsViewModel : ObservableObject
         AsioOutputChannels =
             new ObservableCollection<int>();
 
+        AsioSampleRates = new ObservableCollection<int>
+                            {
+                                44100,
+                                48000,
+                                88200,
+                                96000
+                            };
 
         OutputTypes =
             new ObservableCollection<AudioOutputType>

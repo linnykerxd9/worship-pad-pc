@@ -112,7 +112,25 @@ public class SettingsService
         SaveSettings(settings);
     }
 
+    public void SaveAsioSampleRate(
+    int sampleRate)
+    {
+        var settings =
+            LoadSettings();
 
+        settings.AsioSampleRate =
+            sampleRate;
+
+        SaveSettings(
+            settings);
+    }
+
+
+    public int LoadAsioSampleRate()
+    {
+        return LoadSettings()
+            .AsioSampleRate;
+    }
 
     public double LoadVolume()
     {

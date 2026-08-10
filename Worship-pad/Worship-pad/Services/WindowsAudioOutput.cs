@@ -10,26 +10,48 @@ public class WindowsAudioOutput : IAudioOutput
 
     private readonly MMDevice? device;
 
+    public int InputSampleRate { get; private set; }
 
-    public WindowsAudioOutput(MMDevice? selectedDevice)
+    public int OutputSampleRate { get; private set; }
+
+    public int OutputChannels { get; private set; }
+
+    public bool WasResampled => false;
+
+
+    public WindowsAudioOutput(
+        MMDevice? selectedDevice)
     {
         device = selectedDevice;
     }
 
 
-    public void Init(WaveStream stream)
+    public void Init(
+        WaveStream stream)
     {
+        InputSampleRate =
+            stream.WaveFormat.SampleRate;
+
+        OutputSampleRate =
+            stream.WaveFormat.SampleRate;
+
+        OutputChannels =
+            stream.WaveFormat.Channels;
+
+
         if (device != null)
         {
-            output = new WasapiOut(
-                device,
-                AudioClientShareMode.Shared,
-                true,
-                100);
+            output =
+                new WasapiOut(
+                    device,
+                    AudioClientShareMode.Shared,
+                    true,
+                    100);
         }
         else
         {
-            output = new WaveOutEvent();
+            output =
+                new WaveOutEvent();
         }
 
 
@@ -52,6 +74,7 @@ public class WindowsAudioOutput : IAudioOutput
     public void Dispose()
     {
         output?.Dispose();
+
         output = null;
     }
 }

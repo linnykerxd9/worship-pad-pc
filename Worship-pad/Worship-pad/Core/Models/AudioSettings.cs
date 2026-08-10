@@ -8,7 +8,7 @@ public class AudioSettings
         = AudioOutputType.Windows;
 
     public string? OutputDevice { get; set; }
-
+    public int AsioSampleRate { get; set; } = 48000;
     public string? AsioDriver { get; set; }
 
     public int AsioOutputChannel { get; set; }

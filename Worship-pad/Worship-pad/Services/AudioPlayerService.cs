@@ -54,7 +54,6 @@ public class AudioPlayerService : IAudioPlayerService
         _outputFactory = outputFactory;
         _log = log;
 
-
         // =============================
         // CARREGAR CONFIGURAÇÕES SALVAS
         // =============================
@@ -70,6 +69,8 @@ public class AudioPlayerService : IAudioPlayerService
         _settings.AsioOutputChannel =
             _settingsService.LoadAsioOutputChannel();
 
+        _settings.AsioSampleRate = _settingsService.LoadAsioSampleRate();
+
 
         _settings.Volume =
             _settingsService.LoadVolume();
@@ -78,11 +79,11 @@ public class AudioPlayerService : IAudioPlayerService
         var device =
             _settingsService.LoadOutputDevice();
 
-
         if (!string.IsNullOrWhiteSpace(device))
         {
             SetOutputDevice(device);
         }
+
         _log.Info(
             $"Configuração de áudio carregada. " +
             $"Tipo: {_settings.OutputType}, " +
@@ -104,6 +105,11 @@ public class AudioPlayerService : IAudioPlayerService
             reader =
                 new AudioFileReader(filePath);
 
+            _log.Info(
+                $"Formato do pad: " +
+                $"{reader.WaveFormat.SampleRate} Hz, " +
+                $"{reader.WaveFormat.Channels} canais");
+
             reader.Volume =
                 (float)_settings.Volume;
 
@@ -112,9 +118,43 @@ public class AudioPlayerService : IAudioPlayerService
                     _settings,
                     _selectedDevice);
 
+            _log.Info(
+                $"Taxa de saída ASIO: " +
+                $"{_settings.AsioSampleRate} Hz");
+
             output.Init(reader);
 
+
+            _log.Info(
+                $"Formato do pad: " +
+                $"{output.InputSampleRate} Hz, " +
+                $"{reader.WaveFormat.Channels} canais");
+
+
+            if (output.WasResampled)
+            {
+                _log.Info(
+                    $"Resampling aplicado: " +
+                    $"{output.InputSampleRate} Hz → " +
+                    $"{output.OutputSampleRate} Hz");
+            }
+            else
+            {
+                _log.Info(
+                    $"Resampling não necessário. " +
+                    $"Taxa mantida em " +
+                    $"{output.OutputSampleRate} Hz");
+            }
+
+
+            _log.Info(
+                $"Taxa de saída efetiva do WorshipPad: " +
+                $"{output.OutputSampleRate} Hz, " +
+                $"{output.OutputChannels} canal(is)");
+
+
             output.Play();
+
 
             _log.Info(
                 $"Pad iniciado com sucesso: " +

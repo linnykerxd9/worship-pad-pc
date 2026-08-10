@@ -21,7 +21,8 @@ public class AudioOutputFactory : IAudioOutputFactory
                     settings.AsioDriver
                         ?? throw new InvalidOperationException(
                             "Driver ASIO não selecionado."),
-                    settings.AsioOutputChannel),
+                    settings.AsioOutputChannel,
+                    settings.AsioSampleRate),
 
             _ =>
                 throw new ArgumentOutOfRangeException(
