@@ -14,7 +14,8 @@ public class AudioOutputFactory : IAudioOutputFactory
         return settings.OutputType switch
         {
             AudioOutputType.Windows =>
-                new WindowsAudioOutput(device),
+                new WindowsAudioOutput(
+                    device),
 
             AudioOutputType.Asio =>
                 new AsioAudioOutput(

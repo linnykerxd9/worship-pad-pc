@@ -12,7 +12,6 @@ public class AsioAudioOutput : IAudioOutput
 
     private AsioOut? _output;
 
-
     public int InputSampleRate { get; private set; }
 
     public int OutputSampleRate { get; private set; }
@@ -21,6 +20,7 @@ public class AsioAudioOutput : IAudioOutput
 
     public bool WasResampled { get; private set; }
 
+    public event EventHandler? PlaybackStopped;
 
     public AsioAudioOutput(
         string driverName,
@@ -32,17 +32,14 @@ public class AsioAudioOutput : IAudioOutput
         _sampleRate = sampleRate;
     }
 
-
     public void Init(
         WaveStream stream)
     {
         InputSampleRate =
             stream.WaveFormat.SampleRate;
 
-
         var sampleProvider =
             stream.ToSampleProvider();
-
 
         // ==========================================
         // CONVERTER PARA MONO
@@ -52,7 +49,6 @@ public class AsioAudioOutput : IAudioOutput
             new MonoSampleProvider(
                 sampleProvider);
 
-
         // ==========================================
         // RESAMPLING
         // ==========================================
@@ -60,9 +56,7 @@ public class AsioAudioOutput : IAudioOutput
         ISampleProvider outputProvider =
             monoProvider;
 
-
         WasResampled = false;
-
 
         if (monoProvider.WaveFormat.SampleRate !=
             _sampleRate)
@@ -75,7 +69,6 @@ public class AsioAudioOutput : IAudioOutput
             WasResampled = true;
         }
 
-
         // ==========================================
         // INFORMAÇÕES DA SAÍDA
         // ==========================================
@@ -86,7 +79,6 @@ public class AsioAudioOutput : IAudioOutput
         OutputChannels =
             outputProvider.WaveFormat.Channels;
 
-
         // ==========================================
         // SAMPLE -> WAVE
         // ==========================================
@@ -94,7 +86,6 @@ public class AsioAudioOutput : IAudioOutput
         var waveProvider =
             new SampleToWaveProvider(
                 outputProvider);
-
 
         // ==========================================
         // ASIO
@@ -104,32 +95,52 @@ public class AsioAudioOutput : IAudioOutput
             new AsioOut(
                 _driverName);
 
-
         _output.ChannelOffset =
             _outputChannel - 1;
 
-
         _output.Init(
             waveProvider);
+
+        // ==========================================
+        // EVENTO DE FIM DA REPRODUÇÃO
+        // ==========================================
+
+        _output.PlaybackStopped +=
+            OnPlaybackStopped;
     }
 
+    private void OnPlaybackStopped(
+        object? sender,
+        StoppedEventArgs e)
+    {
+        PlaybackStopped?.Invoke(
+            this,
+            EventArgs.Empty);
+    }
 
     public void Play()
     {
         _output?.Play();
     }
 
-
     public void Stop()
     {
-        _output?.Stop();
+        if (_output != null)
+        {
+            _output.Stop();
+        }
     }
-
 
     public void Dispose()
     {
-        _output?.Dispose();
+        if (_output != null)
+        {
+            _output.PlaybackStopped -=
+                OnPlaybackStopped;
 
-        _output = null;
+            _output.Dispose();
+
+            _output = null;
+        }
     }
 }

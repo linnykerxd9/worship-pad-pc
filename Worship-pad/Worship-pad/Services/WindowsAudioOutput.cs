@@ -18,13 +18,13 @@ public class WindowsAudioOutput : IAudioOutput
 
     public bool WasResampled => false;
 
+    public event EventHandler? PlaybackStopped;
 
     public WindowsAudioOutput(
         MMDevice? selectedDevice)
     {
         device = selectedDevice;
     }
-
 
     public void Init(
         WaveStream stream)
@@ -38,6 +38,9 @@ public class WindowsAudioOutput : IAudioOutput
         OutputChannels =
             stream.WaveFormat.Channels;
 
+        // ==========================================
+        // CRIAR SAÍDA
+        // ==========================================
 
         if (device != null)
         {
@@ -54,27 +57,53 @@ public class WindowsAudioOutput : IAudioOutput
                 new WaveOutEvent();
         }
 
+        // ==========================================
+        // EVENTO DE FIM DA REPRODUÇÃO
+        // ==========================================
 
-        output.Init(stream);
+        output.PlaybackStopped +=
+            OnPlaybackStopped;
+
+        // ==========================================
+        // INICIALIZAR ÁUDIO
+        // ==========================================
+
+        output.Init(
+            stream);
     }
 
+    private void OnPlaybackStopped(
+        object? sender,
+        StoppedEventArgs e)
+    {
+        PlaybackStopped?.Invoke(
+            this,
+            EventArgs.Empty);
+    }
 
     public void Play()
     {
         output?.Play();
     }
 
-
     public void Stop()
     {
-        output?.Stop();
+        if (output != null)
+        {
+            output.Stop();
+        }
     }
-
 
     public void Dispose()
     {
-        output?.Dispose();
+        if (output != null)
+        {
+            output.PlaybackStopped -=
+                OnPlaybackStopped;
 
-        output = null;
+            output.Dispose();
+
+            output = null;
+        }
     }
 }

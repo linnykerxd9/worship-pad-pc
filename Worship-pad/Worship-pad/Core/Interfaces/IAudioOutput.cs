@@ -17,4 +17,6 @@ public interface IAudioOutput : IDisposable
     void Play();
 
     void Stop();
+
+    event EventHandler? PlaybackStopped;
 }
